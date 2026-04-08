@@ -77,6 +77,7 @@ export interface Database {
           id?: string
           display_name?: string | null
           default_loyalty_program_slug?: string
+          plan_tier?: PlanTier
           timezone?: string
           created_at?: string
           updated_at?: string

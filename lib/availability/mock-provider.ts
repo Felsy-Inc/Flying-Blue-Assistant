@@ -52,7 +52,7 @@ function buildSegment(
   const dep = new Date(day)
   dep.setUTCHours(Math.floor(startMinuteOfDay / 60), startMinuteOfDay % 60, 0, 0)
   const arr = new Date(dep.getTime() + durationMin * 60000)
-  const airline = AIRLINES[airlineIdx % AIRLINES.length]
+  const airline = AIRLINES[airlineIdx % AIRLINES.length]!
   return {
     origin,
     destination,
@@ -90,7 +90,7 @@ function buildOutboundLegs(
       ],
     }
   }
-  const hub = HUBS[Math.floor(rand() * HUBS.length)]
+  const hub = HUBS[Math.floor(rand() * HUBS.length)]!
   const leg1 = 120 + Math.floor(rand() * 90)
   const leg2 = 360 + Math.floor(rand() * 200)
   const start = 7 * 60 + rand() * 240

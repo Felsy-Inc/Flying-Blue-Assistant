@@ -19,18 +19,19 @@ const emit = defineEmits<{
 const { t } = useT()
 
 const hubs = ['AMS', 'BRU', 'CDG'] as const
+type HubCode = (typeof hubs)[number]
 
 const state = reactive({
   tripType: 'one_way' as 'one_way' | 'round_trip',
-  origin: 'AMS',
+  origin: 'AMS' as HubCode,
   destination: '',
   outboundDate: '',
   returnDate: '',
   flexibilityDays: 0,
   passengers: 1,
   cabin: 'economy' as 'economy' | 'premium_economy' | 'business',
-  maxMiles: '' as string | number,
-  maxTaxesEur: '' as string | number,
+  maxMiles: '',
+  maxTaxesEur: '',
   directOnly: false,
 })
 

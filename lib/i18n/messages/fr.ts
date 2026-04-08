@@ -1,17 +1,16 @@
 export const fr = {
   common: {
     appName: 'AwardFlightAlert',
-    codename: 'MVP centré Flying Blue',
     loading: 'Chargement…',
   },
   seo: {
     siteTitle: 'AwardFlightAlert — recherche award Flying Blue & alertes',
     defaultDescription:
-      'AwardFlightAlert aide les voyageurs européens à rechercher des awards Flying Blue et à recevoir des alertes e-mail quand le voyage correspond à vos dates, cabine et plafonds — plus simple que les outils « tout-en-un ». Pas un site de réservation.',
+      'AwardFlightAlert vous aide à rechercher des awards Flying Blue au départ de Paris, Amsterdam et Bruxelles, à comparer miles et surtaxes d’un coup d’œil, et à recevoir des e-mails lorsque les options évoluent. Service indépendant—chaque billet se finalise sur Flying Blue.',
     pageTitle: {
-      home: 'Awards Flying Blue, recherche & alertes pour l’Europe',
-      browse: 'Parcourir la disponibilité',
-      pricing: 'Offres & tarifs',
+      home: 'Recherche award Flying Blue, miles & alertes e-mail',
+      browse: 'Recherche award',
+      pricing: 'Alertes award Flying Blue — offres & tarifs',
       login: 'Connexion',
       signup: 'Créer un compte',
       confirm: 'Confirmer la connexion',
@@ -22,18 +21,19 @@ export const fr = {
     },
     pageDescription: {
       home:
-        'AwardFlightAlert : recherche award Flying Blue guidée et alertes e-mail depuis les hubs européens. Données de démo pour la recherche ; alertes et e-mail réels lorsque activés.',
-      browse: 'Exemple de disponibilité type Flying Blue (données de démo).',
-      pricing: 'Gratuit et Pro : limites de recherche quotidiennes, alertes actives et notifications e-mail.',
-      login: 'Connectez-vous à votre espace Flying Blue Assistant.',
-      signup: 'Créez un compte gratuit pour sauvegarder recherches et alertes.',
+        'Recherchez des awards Flying Blue au départ de CDG, AMS et BRU. Comparez miles, taxes et escales au même endroit, enregistrez des alertes pour vos voyages et recevez un e-mail lorsque les correspondances pertinentes changent.',
+      browse: 'Recherchez des awards Flying Blue au départ d’AMS, BRU et CDG.',
+      pricing:
+        'Comparez Gratuit et Pro pour la recherche award Flying Blue et les alertes e-mail : plafonds de recherche, fréquence des contrôles d’alertes et facturation—sans carte pour commencer.',
+      login: 'Connectez-vous à AwardFlightAlert pour rechercher, gérer vos alertes et consulter votre offre.',
+      signup: 'Créez votre compte AwardFlightAlert pour enregistrer recherches, alertes et préférences.',
       confirm: 'Terminez la connexion depuis le lien reçu par e-mail.',
       app: 'Vue d’ensemble : offre, utilisation et alertes actives.',
       appSearch:
-        'Recherche type Flying Blue depuis AMS, BRU et CDG. Résultats en démo jusqu’à branchement d’une source live.',
+        'Recherchez des vols en miles au départ d’AMS, BRU et CDG. Comparez miles, taxes, escales et cabine, puis créez une alerte depuis un résultat.',
       appAlerts:
-        'Alertes sur itinéraires et dates ; vérifications planifiées et e-mail en cas de nouvelles options.',
-      appAccount: 'Profil, offre et facturation Stripe (si activée).',
+        'Créez et gérez vos alertes award Flying Blue. Des vérifications planifiées tournent en arrière-plan ; un e-mail part lorsque de nouvelles options correspondent à vos critères.',
+      appAccount: 'Profil, abonnement et facturation au même endroit.',
     },
   },
   locale: {
@@ -57,9 +57,10 @@ export const fr = {
     dashboard: 'Tableau de bord',
     browse: 'Parcourir',
     pricing: 'Tarifs',
+    faq: 'FAQ',
     login: 'Connexion',
     signup: 'S’inscrire',
-    search: 'Recherche',
+    search: 'Recherche award',
   },
   app: {
     nav: {
@@ -67,7 +68,7 @@ export const fr = {
       search: 'Recherche award',
       alerts: 'Alertes',
       account: 'Compte',
-      backToSite: 'Site marketing',
+      backToSite: 'Site web',
     },
   },
   usage: {
@@ -84,9 +85,8 @@ export const fr = {
   },
   footer: {
     tagline:
-      'Recherche award Flying Blue et alertes e-mail pour les voyageurs en Europe — pas un site de réservation.',
+      'Recherche award Flying Blue et alertes e-mail pour les voyageurs en Europe. Nous ne vendons pas de billets—chaque réservation se finalise chez la compagnie.',
     copyright: '© {year} {appName}. Tous droits réservés.',
-    codenameNote: 'Note de version : {codename}',
     colProduct: 'Produit',
     colLegal: 'Confiance',
     legalShort:
@@ -95,36 +95,36 @@ export const fr = {
   home: {
     kicker: 'AwardFlightAlert',
     heroTopic: 'Flying Blue · Europe',
-    heroTitleTop: 'Recherchez et alertez sur les',
-    heroTitleAccent: 'awards Flying Blue',
-    heroTitleBottom: 'avec un parcours guidé et plus calme.',
-    title: 'Cherchez en miles. Fixez vos critères. Recevez un e-mail quand ça colle.',
+    heroTitleTop: 'Les awards Flying Blue,',
+    heroTitleAccent: 'recherche cadrée',
+    heroTitleBottom:
+      'Au départ de Paris, Amsterdam ou Bruxelles—comparez les options, recevez un e-mail lorsque votre alerte signale un changement.',
+    title: 'Recherchez en miles. Enregistrez des alertes. Vérifiez et réservez sur Flying Blue.',
     subtitle:
-      'Pour les voyageurs européens qui vivent en miles : hubs AMS, BRU, CDG en premier, miles et taxes lisibles, alertes sur vos dates et cabine — sans le bruit des outils « tous programmes, toutes routes ».',
+      'Pour les voyageurs qui cumulent et utilisent des miles Flying Blue : un formulaire court, des résultats comparables et des alertes calquées sur vos dates et votre cabine—sans l’empilement multi-programmes.',
     heroTrust:
-      'Pas d’agence ni de billetterie. La recherche utilise des données de démo pendant que nous stabilisons le produit ; alertes, critères sauvegardés et e-mail sont réels lorsque activés.',
-    trustTitle: 'Confiance, périmètre et transparence — dès le départ',
-    trustSubtitle: 'Un outil premium dit clairement ce qu’il fait (et ce qu’il ne fait pas).',
-    trust1Title: 'Pas un site de réservation',
+      'Service indépendant—ni la compagnie ni une agence. Vous explorez et suivez la disponibilité type miles ici ; chaque billet passe par Flying Blue ou le conseiller de votre choix.',
+    trustTitle: 'Ce que nous vous apportons',
+    trustSubtitle: 'Où nous intervenons, où nous nous arrêtons, et comment cela s’inscrit dans un vrai voyage en miles.',
+    trust1Title: 'Vous réservez chez la compagnie',
     trust1Body:
-      'Nous aidons à repérer et suivre des options type miles. La réservation reste entre vous et la compagnie ou votre agent.',
-    trust2Title: 'L’Europe d’abord',
+      'Nous mettons en avant et suivons des options type miles. L’émission du billet se fait toujours via Flying Blue ou un professionnel que vous choisissez—jamais via AwardFlightAlert.',
+    trust2Title: 'Les départs européens d’abord',
     trust2Body:
-      'Défauts et textes supposent des départs européens — pas un flux US-centric « points ».',
-    trust3Title: 'Transparence sur les données',
+      'Textes, valeurs par défaut et hubs correspondent à la façon dont les membres en France et au Benelux recherchent—pas à un outil mondial passe-partout.',
+    trust3Title: 'Contrôlez avant de payer',
     trust3Body:
-      'Les résultats de recherche sont aujourd’hui une démo réaliste. Vos alertes, e-mails et trajets sauvegardés sont de vraies fonctionnalités lorsque activées.',
-    trust4Title: 'Volontairement ciblé',
+      'Les sièges award et les tarifs évoluent vite. Servez-vous d’AwardFlightAlert pour comparer, puis confirmez disponibilité, taxes et prix final sur airfranceklm.com ou dans l’app Flying Blue.',
+    trust4Title: 'Un seul programme, moins de réglages',
     trust4Body:
-      'Flying Blue d’abord, moins de réglages que les mega-moteurs — pour avancer vite, débutants comme passionnés.',
-    mock: {
+      'Flying Blue uniquement : moins de paramètres, des résultats plus lisibles—vous choisissez un vol, vous ne pilotez pas une douzaine de programmes.',
+    preview: {
       searchAria: 'Illustration de l’écran de recherche award avec exemple d’itinéraire et de résultats',
       alertsAria: 'Illustration de la liste d’alertes avec statuts',
       urlSearch: 'app…/search',
       urlAlerts: 'app…/alerts',
       panelSearch: 'Recherche award',
       panelAlerts: 'Alertes actives',
-      badgeDemo: 'Données démo',
       from: 'De',
       to: 'Vers',
       dateOut: '12 juin · Aller',
@@ -146,10 +146,11 @@ export const fr = {
       statusOn: 'Active',
       statusPaused: 'En pause',
       alertFoot:
-        'E-mail lorsque l’ensemble des options correspondantes change — la fréquence dépend de votre offre.',
+        'E-mail lorsque les correspondances pertinentes pour votre alerte changent—la fréquence des contrôles dépend de votre offre.',
     },
     pricingTeaserTitle: 'Des offres simples',
-    pricingTeaserSubtitle: 'Commencez gratuitement. Passez à Pro quand les alertes comptent vraiment.',
+    pricingTeaserSubtitle:
+      'Commencez en Gratuit sans enregistrer de carte. Passez à Pro pour davantage de recherches quotidiennes, plus d’alertes simultanées et des contrôles en arrière-plan plus rapprochés.',
     pricingTeaserFreeName: 'Gratuit',
     pricingTeaserFreePrice: '0 €',
     pricingTeaserFreeMeta: 'Sans carte bancaire',
@@ -160,43 +161,43 @@ export const fr = {
     pricingTeaserProMeta: 'par mois · résiliable',
     pricingTeaserProB1: '50 recherches award par jour UTC',
     pricingTeaserProB2: "Jusqu'à 10 alertes · contrôles plus fréquents",
-    pricingTeaserCta: 'Comparer toutes les fonctionnalités',
-    ctaPrimaryTitle: 'Lancer une recherche guidée ?',
+    pricingTeaserCta: 'Voir la comparaison complète',
+    ctaPrimaryTitle: 'Essayez la recherche en une minute',
     ctaPrimaryBody:
-      'Sans carte sur Gratuit. Créez un compte pour sauvegarder des alertes et reprendre où vous vous êtes arrêté.',
+      'Gratuit ne demande jamais de carte. Créez un compte pour enregistrer des alertes et reprendre sur n’importe quel appareil.',
     ctaBrowse: 'Ouvrir la recherche award',
-    ctaPricing: 'Comparer les offres',
+    ctaPricing: 'Voir les offres',
     howTitle: 'Comment ça marche',
-    howSubtitle: 'Trois étapes, du besoin à la boîte mail.',
-    howStep1Title: 'Recherche encadrée',
+    howSubtitle: 'Trois étapes, de l’itinéraire à la boîte mail.',
+    howStep1Title: 'Recherche avec un formulaire court',
     howStep1Body:
-      'Départ, arrivée, dates, cabine, plafonds miles/taxes optionnels. Un formulaire court pour éviter le bruit.',
+      'Départ, arrivée, dates, cabine, plafonds miles et taxes en option—assez de structure pour comparer, rien de superflu.',
     howStep2Title: 'Enregistrer une alerte',
     howStep2Body:
-      'Transformez un voyage en surveillance. Nous suivons ce qui compte pour vous, pas toutes les routes du monde.',
-    howStep3Title: 'E-mail si ça bouge',
+      'Nous surveillons le voyage que vous avez décrit—itinéraires, fenêtres et cabine—pas l’ensemble du réseau.',
+    howStep3Title: 'E-mail quand ça bouge',
     howStep3Body:
-      'Quand de nouvelles options correspondent, vous êtes prévenu. Gratuit ~ toutes les 60 min ; Pro ~ toutes les 15 min.',
-    propsTitle: 'Pourquoi ce produit plutôt qu’un mega-moteur ?',
-    propsSubtitle: 'Moins de dispersion, des limites claires, Flying Blue au centre.',
-    prop1Title: 'Flying Blue au cœur',
+      'Lorsque les vols qui correspondent à votre alerte changent de façon significative, nous vous écrivons. En Gratuit, contrôle environ toutes les 60 minutes en moyenne ; en Pro, environ toutes les 15 minutes.',
+    propsTitle: 'Pourquoi une approche 100 % Flying Blue aide',
+    propsSubtitle: 'Un seul programme, un seul fil—moins de bruit, des décisions plus rapides.',
+    prop1Title: 'Pensé pour les membres Flying Blue',
     prop1Body:
-      'Textes et défauts supposent Flying Blue et hubs européens — pas un labyrinthe « tous programmes ».',
-    prop2Title: 'Transparence sur les données',
+      'Pas de tableaux de bord multi-programmes. Valeurs par défaut et hubs reflètent comment les voyageurs en France et au Benelux utilisent réellement leurs miles.',
+    prop2Title: 'Miles, surtaxes et routage réunis',
     prop2Body:
-      'Aujourd’hui des données de démo pour valider le produit. Alertes, e-mail et critères sauvegardés sont réels.',
-    prop3Title: 'Alertes alignées sur votre voyage',
+      'Les chiffres qui font pencher la balance sont côte à côte : vous présélectionnez ici, vous finalisez sur Flying Blue en confiance.',
+    prop3Title: 'Des alertes alignées sur votre voyage',
     prop3Body:
-      'Fenêtres de dates, cabine, passagers, plafonds. Notification seulement si l’ensemble des vols pertinents change.',
-    prop4Title: 'Pensé pour les voyageurs UE',
+      'Vous fixez la souplesse sur les dates, la cabine, le nombre de passagers et des plafonds optionnels. Nous notifions quand l’ensemble pertinent change—pas à chaque retouche d’horaire.',
+    prop4Title: 'CDG, AMS et BRU au cœur du produit',
     prop4Body:
-      'Parcours pour ceux qui partent de Paris, Amsterdam ou Bruxelles — pas un flux US-centric « points ».',
-    casesTitle: 'Exemples d’usage',
-    casesSubtitle: 'Situations concrètes pour un outil Flying Blue ciblé.',
+      'Les départs via Paris, Amsterdam ou Bruxelles sont au centre de l’expérience—pas une option ajoutée à un outil pensé ailleurs.',
+    casesTitle: 'Des trajets que l’on suit souvent',
+    casesSubtitle: 'Des exemples qui collent à une recherche et des alertes d’abord Flying Blue.',
     case1Badge: 'Long-courrier',
     case1Title: 'Paris–New York en Business',
     case1Body:
-      'Surveillez deux semaines en été, plafonnez miles et taxes, mettez l’alerte en pause après réservation.',
+      'Surveillez deux semaines en été, plafonnez miles et taxes, mettez l’alerte en pause une fois le billet obtenu.',
     case2Badge: 'Europe',
     case2Title: 'Week-ends en Economy',
     case2Body:
@@ -205,46 +206,51 @@ export const fr = {
     case3Title: 'Voyage en famille, quatre passagers',
     case3Body:
       'Nombre de passagers défini une fois ; alertes et recherche restent cohérents avec votre groupe.',
-    screenshotsTitle: 'Ce que vous utilisez vraiment',
+    screenshotsTitle: 'Recherche et alertes réunies',
     screenshotsSubtitle:
-      'Aperçu structuré de la recherche et des alertes — de vraies captures remplaceront ces maquettes quand l’UI sera figée.',
+      'Comparez pendant que vous planifiez, laissez les alertes veiller ensuite—sans tableur ni avalanche d’onglets.',
     screenshotSearchTitle: 'Recherche award',
-    screenshotSearchHint: 'Route, dates, cabine, tableau miles, taxes et escales.',
+    screenshotSearchHint: 'Route, dates, cabine, miles, taxes et escales triables.',
     screenshotAlertsTitle: 'Alertes',
-    screenshotAlertsHint: 'Liste des surveillances ; historique des matchs à enrichir.',
+    screenshotAlertsHint: 'Surveillances actives et statuts clairs : vous voyez toujours ce qui est suivi.',
     faqTitle: 'FAQ',
     faq1q: 'Est-ce un produit officiel Air France–KLM ou Flying Blue ?',
     faq1a:
-      'Non. AwardFlightAlert est indépendant. Vérifiez toujours dispo et tarif sur le canal Flying Blue officiel avant de réserver.',
-    faq2q: 'Les résultats sont-ils en direct ?',
+      'Non. AwardFlightAlert est indépendant. Avant de payer ou d’émettre un billet, vérifiez toujours disponibilité, taxes et prix final sur le canal Flying Blue officiel.',
+    faq2q: 'La disponibilité affichée est-elle fiable minute par minute ?',
     faq2a:
-      'Pas encore. Données de démo réalistes pour tester les parcours. Source live prévue sur la feuille de route.',
+      'Les sièges award changent souvent. Utilisez AwardFlightAlert pour comparer itinéraires et coûts et pour le suivi par alertes—puis validez ce que vous comptez réserver sur flyingblue.com ou dans l’app Flying Blue.',
     faq3q: 'Que comprend l’offre Gratuit ?',
     faq3a:
-      'Un nombre limité de recherches par jour UTC, une alerte active et le parcours complet. Voir la page tarifs pour les chiffres.',
-    faq4q: 'Différence Gratuit / Pro pour les alertes ?',
+      'Un quota de recherche quotidien (jour calendaire UTC), une alerte active et la même expérience recherche + alertes qu’en Pro. La page tarifs détaille les plafonds et la différence avec Pro.',
+    faq4q: 'En quoi les alertes diffèrent entre Gratuit et Pro ?',
     faq4a:
-      'Pro interroge plus souvent (~15 min vs ~60 min sur Gratuit). Mêmes règles de correspondance et e-mail sur les deux offres.',
+      'Les contrôles en arrière-plan tournent environ toutes les 15 minutes en Pro et environ toutes les 60 minutes en Gratuit. Les règles de correspondance et l’e-mail sont sinon identiques.',
     faq5q: 'Vendez-vous des billets ?',
     faq5a:
-      'Non. Nous aidons à repérer et suivre des options type miles ; la réservation reste entre vous et la compagnie.',
+      'Non. Nous aidons à analyser et suivre des options type miles ; l’émission reste toujours chez la compagnie ou un conseiller que vous désignez.',
     faq6q: 'Langues disponibles ?',
-    faq6a: 'Anglais, néerlandais et français sur le site marketing et la coque app.',
-    ctaMidTitle: 'Essayer la recherche ?',
-    ctaMidBody: 'Sans carte sur Gratuit. Compte requis pour sauver des alertes.',
-    ctaMidPrimary: 'Lancer une recherche',
+    faq6a: 'Anglais, néerlandais et français sur le site marketing et dans le produit une fois connecté.',
+    faq7q: 'Quels aéroports de départ sont pris en charge ?',
+    faq7a:
+      'Les recherches partent de Paris-Charles-de-Gaulle (CDG), Amsterdam Schiphol (AMS) et Bruxelles (BRU). Ce périmètre correspond à la façon dont beaucoup de membres Flying Blue en France et au Benelux construisent leurs voyages.',
+    ctaMidTitle: 'Lancer une recherche',
+    ctaMidBody:
+      'Gratuit ne demande pas de carte. Créez un compte pour enregistrer des alertes et les utiliser sur tous vos appareils.',
+    ctaMidPrimary: 'Ouvrir la recherche',
     ctaMidSecondary: 'Voir les tarifs',
-    ctaBottomTitle: 'Questions sur la facturation ou les limites ?',
-    ctaBottomBody: 'Offres, quotas et montée en gamme sont détaillés sur la page tarifs.',
-    ctaBottomPrimary: 'Offres & FAQ',
+    ctaBottomTitle: 'Offres, plafonds et facturation',
+    ctaBottomBody:
+      'Comparez Gratuit et Pro au même endroit—quotas, fréquence des alertes et réponses sur le paiement.',
+    ctaBottomPrimary: 'Tarifs & FAQ',
   },
   browse: {
     headline: 'Recherche award',
     intro:
-      'Bientôt vous pourrez rechercher des awards Flying Blue aller simple et aller-retour depuis AMS, BRU et CDG avec un parcours simple et guidé.',
-    demoTitle: 'Exemples de résultats (démo)',
+      'Recherchez des awards Flying Blue en aller simple ou aller-retour depuis AMS, BRU et CDG avec des filtres faciles à parcourir.',
+    demoTitle: 'Exemples de résultats',
     demoNote:
-      'Awards illustratifs type Flying Blue pour la mise en page — pas d’inventaire en direct et non réservable.',
+      'Awards illustratifs type Flying Blue à titre comparatif — confirmez toujours sur Flying Blue avant de réserver.',
     cabin: {
       economy: 'Economy',
       premium: 'Premium Economy',
@@ -263,15 +269,16 @@ export const fr = {
     colSeats: 'Disponibilité',
   },
   pricing: {
-    kicker: 'Des offres simples',
+    kicker: 'Offres',
     headline: 'Tarifs',
-    title: 'Gratuit pour explorer. Pro quand les alertes comptent.',
+    title: 'Commencez gratuitement. Passez à Pro pour plus de recherches et des contrôles d’alerte plus rapprochés.',
     intro:
-      'Des limites assumées : coûts maîtrisés et moins de sollicitations massives. Chiffres ci-dessous = produit actuel (jour UTC pour les recherches).',
-    pickPlanTitle: 'Offres',
-    pickPlanDesc: 'Même produit — Pro augmente recherches quotidiennes, alertes actives et fréquence des contrôles.',
-    compareTitle: 'Comparaison détaillée',
-    compareSubtitle: 'Limites exactes aujourd’hui (jour UTC pour les recherches).',
+      'Des plafonds quotidiens gardent le service réactif pour chaque membre. Le compteur de recherches repart à minuit UTC. Gratuit et Pro partagent la même expérience—Pro augmente ce que vous pouvez faire chaque jour et la fréquence à laquelle nous recontrôlons vos alertes.',
+    pickPlanTitle: 'Choisir une offre',
+    pickPlanDesc:
+      'Même recherche et mêmes alertes sur les deux niveaux. Pro ajoute de la marge : plus de recherches par jour, plus d’alertes actives à la fois et des intervalles plus courts entre les contrôles en arrière-plan.',
+    compareTitle: 'Comparer en un coup d’œil',
+    compareSubtitle: 'Limites applicables aujourd’hui (recherches : jour calendaire UTC).',
     compareColFeature: 'Fonction',
     compareColFree: 'Gratuit',
     compareColPro: 'Pro',
@@ -284,36 +291,37 @@ export const fr = {
     compareCadence: 'Fréquence type des contrôles',
     compareCadenceFree: 'Environ toutes les 60 minutes',
     compareCadencePro: 'Environ toutes les 15 minutes',
-    compareEmail: 'E-mail si les matchs changent',
+    compareEmail: 'E-mail si les résultats d’alerte changent',
     compareEmailBoth: 'Oui (si l’e-mail est activé)',
     compareFootnote:
-      'Fréquence liée à l’offre ; surcharge par alerte possible plus tard. Recherche en démo tant qu’il n’y a pas de source live.',
-    faqTitle: 'FAQ facturation',
-    faqSubtitle: 'Cartes, paiement et résiliation — en bref.',
-    billingPoint1: 'Pas de carte en Gratuit',
-    billingPoint2: 'Paiement Pro via Stripe',
-    billingPoint3: 'Résiliable depuis Compte',
-    proCtaNote: 'Paiement sécurisé Stripe · Mensuel · Résiliation à tout moment',
+      'Les intervalles types de contrôle dépendent de votre offre. Vérifiez toujours la disponibilité award, les taxes et le prix final sur Flying Blue avant de finaliser une réservation.',
+    faqTitle: 'Questions sur la facturation',
+    faqSubtitle: 'Paiement, cartes et résiliation—en bref.',
+    billingPoint1: 'Gratuit : sans carte bancaire',
+    billingPoint2: 'Pro : paiement sécurisé via Stripe',
+    billingPoint3: 'Résiliation possible à tout moment depuis Compte',
+    proCtaNote: 'Stripe · Facturation mensuelle · Résiliation à tout moment',
     pFaq1q: 'Puis-je résilier Pro quand je veux ?',
     pFaq1a:
       'Oui. Gérez ou résiliez depuis le portail facturation (page Compte). Pro reste actif jusqu’à la fin de la période payée.',
     pFaq2q: 'Conservez-vous ma carte sur Gratuit ?',
     pFaq2a: 'Non. Gratuit ne demande pas de carte. Checkout uniquement si vous choisissez Pro.',
     pFaq3q: 'Dans quelle devise est facturé Pro ?',
-    pFaq3a: 'Stripe gère le paiement ; prix affiché en euros pour cette MVP.',
-    ctaSectionTitle: 'Facturation transparente',
+    pFaq3a:
+      'Stripe traite le paiement. Les tarifs sont affichés et prélevés en euros, sauf si Stripe propose une option localisée au moment du règlement.',
+    ctaSectionTitle: 'Une facturation claire',
     ctaSectionBody:
-      'Gratuit ne demande jamais de carte. Avec Pro, le paiement passe par Stripe et vos limites se mettent à jour après règlement.',
+      'Gratuit ne demande jamais de coordonnées bancaires. Si vous choisissez Pro, le paiement sécurisé passe par Stripe et vos plafonds sont mis à jour dès le paiement réussi.',
     plans: {
       free: {
         name: 'Gratuit',
         price: '€0',
         period: 'Sans carte',
         features: [
-          '3 recherches award par jour UTC',
+          '3 recherches award par jour calendaire UTC',
           '1 alerte active',
-          'Recherche guidée complète (données de démo)',
-          'E-mail en cas de match (si activé)',
+          'Recherche complète au départ de CDG, AMS et BRU',
+          'E-mail lorsque les correspondances de votre alerte changent (optionnel)',
         ],
       },
       pro: {
@@ -321,22 +329,28 @@ export const fr = {
         price: '€9',
         period: 'par mois · résiliation possible',
         features: [
-          '50 recherches award par jour UTC',
+          '50 recherches award par jour calendaire UTC',
           'Jusqu’à 10 alertes actives',
-          'Contrôles d’alerte plus fréquents (~15 min)',
-          'Mêmes règles e-mail que Gratuit si activé',
+          'Contrôles en arrière-plan environ toutes les 15 minutes',
+          'Mêmes options e-mail qu’en Gratuit',
         ],
       },
     },
-    ctaComingSoon: 'Paiement indisponible',
     ctaUpgrade: 'Passer à Pro',
     ctaUpgradeLogin: 'Connectez-vous pour passer à Pro',
     ctaCurrentFree: 'Vous êtes sur Gratuit.',
     freePlanUpgradeHint: 'Passez par la carte Pro →',
+    freePlanUpgradeHintBillingOff: 'Vous pouvez passer à Pro depuis la page Compte quand vous le souhaitez.',
+    ctaProStart: 'Créer un compte',
+    ctaOpenAccount: 'Accéder au compte',
+    ctaProBillingOffNoteGuest:
+      'Créez un compte pour rechercher en Gratuit. Abonnez-vous à Pro depuis Compte si vous voulez plus de capacité.',
+    ctaProBillingOffNoteSignedIn:
+      'Abonnez-vous à Pro depuis la page Compte si vous voulez plus de capacité.',
     ctaGetStartedFree: 'Créer un compte gratuit',
     ctaAlreadyPro: 'Vous êtes sur Pro',
     checkoutError: 'Impossible de démarrer le paiement. Réessayez.',
-    checkoutCancelToast: 'Paiement annulé — upgrade quand vous voulez.',
+    checkoutCancelToast: 'Paiement annulé. Vous pouvez passer à Pro quand vous voulez.',
     portalError: 'Impossible d’ouvrir le portail de facturation. Réessayez.',
     alreadySubscribedTitle: 'Déjà en Pro',
     alreadySubscribedBody: 'Gérez l’abonnement depuis Compte.',
@@ -349,12 +363,13 @@ export const fr = {
     },
     form: {
       email: 'E-mail',
-      emailHint: 'Utilisez la meme adresse e-mail que votre compte.',
+      emailHint: 'Utilisez la même adresse e-mail que celle de votre compte.',
       password: 'Mot de passe',
-      passwordHint: 'Au moins 8 caracteres.',
+      passwordHint: 'Au moins 8 caractères.',
       confirmPassword: 'Confirmer le mot de passe',
-      confirmPasswordHint: 'Saisissez a nouveau le mot de passe pour eviter les fautes de frappe.',
-      magicHint: 'Entrez l e-mail du compte et nous enverrons un lien de connexion a usage unique.',
+      confirmPasswordHint: 'Saisissez à nouveau le mot de passe pour éviter les fautes de frappe.',
+      magicHint:
+        'Saisissez l’e-mail du compte : nous enverrons un lien de connexion à usage unique.',
       submitLogin: 'Se connecter',
       submitMagic: 'Envoyer le lien',
       submitSignup: 'Créer le compte',
@@ -381,8 +396,9 @@ export const fr = {
       userAlreadyRegistered: 'Cet e-mail est déjà enregistré. Connectez-vous.',
       passwordTooShort: 'Le mot de passe ne respecte pas les règles.',
       rateLimited: 'Trop de tentatives. Patientez puis réessayez.',
-      notConfigured: 'Supabase n’est pas configuré. Définissez SUPABASE_URL et SUPABASE_KEY.',
-      unavailable: 'Authentification indisponible dans cette build.',
+      notConfigured:
+        'La connexion ne peut pas joindre le service d’authentification. Si le problème persiste, contactez l’exploitant du site.',
+      unavailable: 'Connexion temporairement indisponible',
       confirmFailed: 'Connexion impossible avec ce lien.',
     },
     validation: {
@@ -397,8 +413,8 @@ export const fr = {
       title: 'Confirmer la connexion',
       body: 'Finalisation de la connexion depuis votre lien…',
       bodyError: 'Lien expiré ou invalide. Demandez un nouveau lien magique.',
-      successTitle: 'Connexion confirmee',
-      successBody: 'Vous etes connecte. Continuez vers votre espace.',
+      successTitle: 'Connexion confirmée',
+      successBody: 'Vous êtes connecté. Continuez vers votre espace.',
       continueApp: 'Continuer vers l’app',
       backHome: 'Retour à l’accueil',
     },
@@ -416,9 +432,9 @@ export const fr = {
   search: {
     placeholderTitle: 'Recherche award',
     placeholderBody:
-      'Essayez des routes depuis AMS, BRU ou CDG avec des awards de démo réalistes. Pas d’inventaire live — apprenez le flux et préremplissez des alertes.',
+      'Partez d’AMS, BRU ou CDG, comparez miles et surtaxes, puis transformez une option intéressante en alerte. Confirmez chaque réservation sur Flying Blue.',
     sampleRouteLabel: 'Exemple de paire de villes',
-    devReferenceTitle: 'Composants UI (référence)',
+    devReferenceTitle: 'Référence UI',
     sectionFormTitle: 'Recherche',
     sectionFormDesc:
       'Hub, destination, puis affinez dates et cabine. Plafonds miles/taxes optionnels pour filtrer les résultats.',
@@ -428,7 +444,7 @@ export const fr = {
     formGroupFlex: 'Flexibilité des dates',
     formGroupAdvanced: 'Limites optionnelles',
     formActionsHint:
-      'Recherche sur des awards de démo pour valider le produit — pas d’inventaire live.',
+      'Les résultats aident à comparer — vérifiez la disponibilité définitive sur Flying Blue avant de réserver.',
     sectionResultsTitle: 'Résultats',
     sectionResultsDesc: 'Comparez miles, taxes et escales. Créez une alerte depuis une ligne.',
     tripType: 'Type de voyage',
@@ -468,7 +484,7 @@ export const fr = {
     createAlertHint: 'Ouvre l’éditeur d’alerte avec itinéraire et dates préremplis.',
     noResultsTitle: 'Aucun résultat',
     noResultsBody:
-      'Élargissez ± jours, changez de cabine ou désactivez les vols directs. Les données de démo varient — une nouvelle recherche peut afficher des options.',
+      'Élargissez la flexibilité des dates, changez de cabine ou désactivez les vols directs. Ajuster les filtres fait souvent apparaître d’autres options.',
     loadError: 'Échec de la recherche. Réessayez.',
     limitReached: 'Limite de recherches quotidienne atteinte.',
     cacheHint: 'Depuis le cache',
@@ -512,7 +528,7 @@ export const fr = {
   alerts: {
     pageTitle: 'Alertes',
     pageDesc:
-      'Gérez vos alertes Flying Blue. Des vérifications en arrière-plan tournent selon un calendrier ; vous recevez un e-mail lorsque de nouvelles options correspondent.',
+      'Gérez vos alertes Flying Blue. Des vérifications planifiées tournent en arrière-plan ; un e-mail part lorsque de nouvelles options correspondent à vos critères.',
     editorDesc: 'Indiquez l’itinéraire, les dates et les préférences pour cette alerte.',
     cardDatesLabel: 'Dates de voyage',
     newAlert: 'Nouvelle alerte',
@@ -555,7 +571,7 @@ export const fr = {
     unlimited: '—',
     recentMatchesTitle: 'Correspondances récentes',
     recentMatchesPlaceholder:
-      'Quand une exécution d’alerte trouve de nouvelles options, elles s’affichent ici. Activez l’e-mail pour être notifié aussi.',
+      'Lorsqu’un contrôle trouve de nouvelles options pour une alerte, elles apparaissent ici. Activez les e-mails pour recevoir la même information dans votre boîte mail.',
     manageAll: 'Gérer toutes les alertes',
     previewTitle: 'Alertes actives',
   },
@@ -568,7 +584,7 @@ export const fr = {
     activityShellTitle: 'Activité',
     welcomeTitle: 'Bon retour',
     welcomeBody:
-      'Recherchez des awards de démo, ajustez vos alertes et suivez votre quota quotidien — depuis ce tableau de bord.',
+      'Lancez des recherches award, affinez vos alertes et suivez votre utilisation du jour — depuis ce tableau de bord.',
     metricsSampleLabel: 'Exemple de métrique',
     metricsSampleValue: '—',
     alertsEmptyTitle: 'Pas encore d’alertes',
@@ -578,7 +594,7 @@ export const fr = {
     recentMatchesEmptyBody:
       'Quand les contrôles en arrière-plan trouvent de nouvelles options, un historique court apparaîtra ici.',
     accountEmptyTitle: 'Compte',
-    accountEmptyBody: 'Profil, offre et notifications apparaîtront ici.',
+    accountEmptyBody: 'Profil, offre et notifications se gèrent sur cette page.',
     accountSignedInAs: 'Connecté en tant que',
     accountSignOut: 'Se déconnecter',
     accountWorkspaceHint: 'Session gérée par Supabase. Déconnectez-vous sur les appareils partagés.',
@@ -609,6 +625,6 @@ export const fr = {
       'Impossible de synchroniser votre abonnement pour l’instant. Si l’offre reste incorrecte, ouvrez Gérer la facturation ou réessayez dans un instant.',
   },
   placeholders: {
-    comingSoon: 'Bientôt.',
+    comingSoon: '—',
   },
 } as const

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { isApiValidationFailed, parseFetchError } from '~lib/api/fetch-error'
 import type { AlertUpsertBody } from '~lib/alerts/alert-schema'
+import FbaAlertForm from '~/components/fba/alerts/FbaAlertForm.vue'
 
 const props = defineProps<{
   mode: 'create' | 'edit'

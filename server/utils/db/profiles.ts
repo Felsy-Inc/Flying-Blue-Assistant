@@ -2,6 +2,8 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import type { Database } from '~~/types/database.types'
 import { isMissingDbObjectError } from './supabase-errors'
 
+type ProfileRow = Database['public']['Tables']['profiles']['Row']
+
 /**
  * Ensures `public.profiles` has a row (FK target for `subscriptions.user_id`).
  * Use the **service role** client so `auth.admin.getUserById` works.
@@ -37,12 +39,15 @@ export async function ensureProfileForUser(
   }
 }
 
-export async function fetchProfileById(client: SupabaseClient<Database>, userId: string) {
+export async function fetchProfileById(
+  client: SupabaseClient<Database>,
+  userId: string,
+): Promise<ProfileRow | null> {
   const { data, error } = await client.from('profiles').select('*').eq('id', userId).maybeSingle()
 
   if (error) {
     if (isMissingDbObjectError(error)) return null
     throw error
   }
-  return data
+  return (data ?? null) as ProfileRow | null
 }

@@ -6,20 +6,26 @@ import { alertPrefillFromRouteQuery } from '~lib/alerts/query-prefill'
 
 definePageMeta({
   layout: 'app',
+  i18n: false,
 })
 
 const { t } = useT()
 const route = useRoute()
 const router = useRouter()
+const localePath = useLocalePath()
 const toast = useToast()
 
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.appAlerts')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.appAlerts')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.appAlerts')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.appAlerts'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.appAlerts'),
   ogDescription: () => t('seo.pageDescription.appAlerts'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.appAlerts'),
   ogSiteName: () => t('common.appName'),
 })
 
@@ -79,7 +85,7 @@ function consumeEditQueryFromRoute() {
   const row = data.value?.alerts?.find((a) => a.id === editId)
   const next = { ...q }
   delete next.edit
-  router.replace({ path: '/app/alerts', query: next })
+  void router.replace(localePath({ path: '/app/alerts', query: next }))
   if (row) openEdit(row)
 }
 
@@ -87,7 +93,7 @@ function consumeRouteEditorIntent() {
   const pre = alertPrefillFromRouteQuery(route.query as Record<string, unknown>)
   if (pre) {
     openCreate(pre)
-    router.replace({ path: '/app/alerts', query: {} })
+    void router.replace(localePath({ path: '/app/alerts', query: {} }))
     return
   }
 
@@ -100,7 +106,7 @@ function consumeRouteEditorIntent() {
     const next = { ...q }
     delete next.new
     delete next.edit
-    router.replace({ path: '/app/alerts', query: next })
+    void router.replace(localePath({ path: '/app/alerts', query: next }))
     return
   }
 
@@ -177,7 +183,7 @@ const alerts = computed(() => data.value?.alerts ?? [])
         <UButton color="primary" size="lg" @click="openCreate(null)">
           {{ t('alerts.newAlert') }}
         </UButton>
-        <UButton to="/app/search" color="neutral" variant="outline" size="lg">
+        <UButton :to="localePath('/app/search')" color="neutral" variant="outline" size="lg">
           {{ t('app.nav.search') }}
         </UButton>
       </div>

@@ -6,6 +6,7 @@ import {
   navigateTo,
   onMounted,
   ref,
+  useHead,
   useRoute,
   useRuntimeConfig,
   useSeoMeta,
@@ -14,16 +15,20 @@ import {
   useT,
 } from '#imports'
 import { fbaMarketingAccordionUi } from '~lib/fbaMarketingUi'
-import type { Locale } from '~lib/i18n'
 import { messages } from '~lib/i18n'
+import type { Locale } from '~lib/i18n/locales'
+import { buildFaqPageJsonLd } from '~lib/seo/faq-jsonld'
+import { absoluteUrlForLocale } from '~lib/seo/locale-urls'
 
 definePageMeta({
   layout: 'marketing',
 })
 
 const { t, locale } = useT()
+const localePath = useLocalePath()
 const route = useRoute()
 const config = useRuntimeConfig()
+const siteUrl = computed(() => String(config.public.appUrl ?? '').replace(/\/$/, '') || '')
 const toast = useToast()
 const user = useSupabaseUser()
 
@@ -33,6 +38,8 @@ const isLoggedIn = computed(() => Boolean(user.value?.sub))
 const freePlan = computed(() => messages[locale.value as Locale].pricing.plans.free)
 const proPlan = computed(() => messages[locale.value as Locale].pricing.plans.pro)
 
+useMarketingLocaleSeo('/pricing')
+
 const checkoutLoading = ref(false)
 
 const pFaqItems = computed(() => [
@@ -40,6 +47,14 @@ const pFaqItems = computed(() => [
   { label: t('pricing.pFaq2q'), content: t('pricing.pFaq2a') },
   { label: t('pricing.pFaq3q'), content: t('pricing.pFaq3a') },
 ])
+
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.pricing')
+
+const pricingFaqJsonLd = computed(() =>
+  buildFaqPageJsonLd(
+    pFaqItems.value.map((item) => ({ question: item.label, answer: item.content })),
+  ),
+)
 
 const heroTrustItems = computed(() => [
   t('pricing.billingPoint1'),
@@ -78,19 +93,37 @@ async function startProCheckout() {
 onMounted(() => {
   if (route.query.checkout === 'cancel') {
     toast.add({ title: t('pricing.checkoutCancelToast'), color: 'neutral' })
-    void navigateTo('/pricing', { replace: true })
+    const q = { ...route.query }
+    delete q.checkout
+    void navigateTo({ path: localePath('/pricing'), query: q, replace: true })
   }
 })
 
 useSeoMeta({
   title: () => t('seo.pageTitle.pricing'),
-  ogTitle: () => t('seo.pageTitle.pricing'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.pricing'),
   ogDescription: () => t('seo.pageDescription.pricing'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.pricing'),
   ogSiteName: () => t('common.appName'),
+  ogUrl: () =>
+    siteUrl.value
+      ? absoluteUrlForLocale(siteUrl.value, locale.value as Locale, '/pricing')
+      : undefined,
 })
+
+useHead(() => ({
+  script: [
+    {
+      key: 'fba-pricing-faq-jsonld',
+      type: 'application/ld+json',
+      innerHTML: pricingFaqJsonLd.value,
+    },
+  ],
+}))
 </script>
 
 <template>
@@ -166,21 +199,18 @@ useSeoMeta({
 
           <template #footer>
             <div class="space-y-3 border-t border-default/35 pt-4 dark:border-default/25">
-              <UButton v-if="!billingEnabled" block disabled color="neutral" variant="soft" size="lg">
-                {{ t('pricing.ctaComingSoon') }}
-              </UButton>
               <div
-                v-else-if="isLoggedIn"
+                v-if="isLoggedIn"
                 class="fba-inset-well rounded-xl px-4 py-3.5 text-center"
               >
                 <p class="text-sm font-medium text-highlighted">
                   {{ t('pricing.ctaCurrentFree') }}
                 </p>
                 <p class="mt-1 text-xs leading-relaxed text-dimmed">
-                  {{ t('pricing.freePlanUpgradeHint') }}
+                  {{ billingEnabled ? t('pricing.freePlanUpgradeHint') : t('pricing.freePlanUpgradeHintBillingOff') }}
                 </p>
               </div>
-              <UButton v-else to="/signup" block color="neutral" variant="outline" size="lg">
+              <UButton v-else :to="localePath('/signup')" block color="neutral" variant="outline" size="lg">
                 {{ t('pricing.ctaGetStartedFree') }}
               </UButton>
             </div>
@@ -189,7 +219,7 @@ useSeoMeta({
 
         <div id="pricing-pro" class="scroll-mt-10 lg:flex lg:flex-col">
           <div
-            class="relative flex flex-1 flex-col rounded-[var(--fba-radius-card)] p-px ring-2 ring-primary/35 ring-offset-2 ring-offset-default dark:ring-primary/40 dark:ring-offset-[var(--ui-color-gray-950)]"
+            class="relative flex flex-1 flex-col rounded-[var(--fba-radius-card)] p-px ring-2 ring-primary/35 ring-offset-2 ring-offset-default dark:ring-primary/40 dark:ring-offset-[var(--ui-color-neutral-950)]"
           >
             <span
               class="pointer-events-none absolute inset-x-6 top-0 z-10 h-0.5 rounded-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-90"
@@ -238,14 +268,12 @@ useSeoMeta({
 
               <template #footer>
                 <div class="space-y-3 border-t border-primary/15 pt-4 dark:border-primary/20">
-                  <UButton v-if="!billingEnabled" block disabled color="primary" size="lg">
-                    {{ t('pricing.ctaComingSoon') }}
-                  </UButton>
-                  <UButton v-else-if="!isLoggedIn" to="/login" block color="primary" size="lg">
-                    {{ t('pricing.ctaUpgradeLogin') }}
-                  </UButton>
-                  <template v-else>
+                  <template v-if="billingEnabled">
+                    <UButton v-if="!isLoggedIn" :to="localePath('/login')" block color="primary" size="lg">
+                      {{ t('pricing.ctaUpgradeLogin') }}
+                    </UButton>
                     <UButton
+                      v-else
                       block
                       color="primary"
                       size="lg"
@@ -254,13 +282,38 @@ useSeoMeta({
                     >
                       {{ t('pricing.ctaUpgrade') }}
                     </UButton>
+                    <p class="text-center text-[0.7rem] font-medium uppercase tracking-wide text-dimmed">
+                      {{ t('pricing.proCtaNote') }}
+                    </p>
                   </template>
-                  <p
-                    v-if="billingEnabled"
-                    class="text-center text-[0.7rem] font-medium uppercase tracking-wide text-dimmed"
-                  >
-                    {{ t('pricing.proCtaNote') }}
-                  </p>
+                  <template v-else>
+                    <UButton
+                      v-if="!isLoggedIn"
+                      :to="localePath('/signup')"
+                      block
+                      color="primary"
+                      size="lg"
+                    >
+                      {{ t('pricing.ctaProStart') }}
+                    </UButton>
+                    <UButton
+                      v-else
+                      :to="localePath('/app/account')"
+                      block
+                      color="primary"
+                      size="lg"
+                      variant="soft"
+                    >
+                      {{ t('pricing.ctaOpenAccount') }}
+                    </UButton>
+                    <p class="text-center text-xs leading-relaxed text-dimmed">
+                      {{
+                        isLoggedIn
+                          ? t('pricing.ctaProBillingOffNoteSignedIn')
+                          : t('pricing.ctaProBillingOffNoteGuest')
+                      }}
+                    </p>
+                  </template>
                 </div>
               </template>
             </FbaAppCard>
@@ -392,6 +445,8 @@ useSeoMeta({
     </FbaSection>
 
     <FbaSection
+      section-id="pricing-faq"
+      class="scroll-mt-24"
       :title="t('pricing.faqTitle')"
       :description="t('pricing.faqSubtitle')"
     >

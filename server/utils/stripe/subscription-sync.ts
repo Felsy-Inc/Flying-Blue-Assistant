@@ -42,8 +42,9 @@ export async function syncStripeSubscriptionToDb(
 
   const dbStatus = stripeStatusToDb(stripeSubscription.status)
   const planTier = resolveSubscriptionPlanTier(stripeSubscription, expectedProPriceId)
-  const cps = stripeSubscription.current_period_start
-  const cpe = stripeSubscription.current_period_end
+  const primaryItem = stripeSubscription.items?.data?.[0]
+  const cps = primaryItem?.current_period_start
+  const cpe = primaryItem?.current_period_end
 
   await upsertSubscriptionAndProfilePlan(serviceClient, {
     userId,
@@ -51,8 +52,8 @@ export async function syncStripeSubscriptionToDb(
     stripeSubscriptionId: stripeSubscription.id,
     status: dbStatus,
     planTier,
-    currentPeriodStart: cps ? new Date(cps * 1000).toISOString() : null,
-    currentPeriodEnd: cpe ? new Date(cpe * 1000).toISOString() : null,
+    currentPeriodStart: cps != null ? new Date(cps * 1000).toISOString() : null,
+    currentPeriodEnd: cpe != null ? new Date(cpe * 1000).toISOString() : null,
     cancelAtPeriodEnd: Boolean(stripeSubscription.cancel_at_period_end),
   })
 }

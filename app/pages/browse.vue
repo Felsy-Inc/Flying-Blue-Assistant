@@ -1,5 +1,8 @@
 <script setup lang="ts">
-await navigateTo('/app/search', { replace: true })
+definePageMeta({ i18n: false })
+
+const localePath = useLocalePath()
+await navigateTo(localePath('/app/search'), { replace: true })
 </script>
 
 <template>

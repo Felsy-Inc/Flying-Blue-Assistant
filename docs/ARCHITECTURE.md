@@ -38,7 +38,7 @@ Runtime config (see `nuxt.config` and `.env.example`) toggles mock provider, ema
 
 ## i18n
 
-App copy is in **`lib/i18n/messages/{en,nl,fr}.ts`**. Locale is driven by `useAppLocale()` (cookie + `Accept-Language`), separate from Nuxt UI locale.
+App copy is in **`lib/i18n/messages/{en,nl,fr}.ts`**, loaded via **`@nuxtjs/i18n`** / Vue I18n (`i18n/i18n.config.ts`). Marketing routes use **`prefix_except_default`** (`/pricing`, `/nl/pricing`, `/fr/pricing`); **`/app/**`** and **`/auth/confirm`** use `definePageMeta({ i18n: false })` so URLs stay stable. `useAppLocale()` and `useT()` wrap the module composables for existing call sites.
 
 ## Deployment (Vercel)
 

@@ -14,31 +14,54 @@ const emit = defineEmits<{
 const { t } = useT()
 
 const hubs = ['AMS', 'BRU', 'CDG'] as const
+type HubCode = (typeof hubs)[number]
 
-const defaultState = (): Record<string, unknown> => ({
-  loyalty_program_slug: 'flying_blue',
-  origin_airport: 'AMS',
-  destination_airport: '',
-  trip_type: 'one_way',
-  outbound_date_start: '',
-  outbound_date_end: '',
-  return_date_start: '',
-  return_date_end: '',
-  cabin: 'economy',
-  passenger_count: 1,
-  max_miles: '' as string | number | '',
-  max_taxes_eur: '' as string | number | '',
-  max_taxes_currency: 'EUR',
-  direct_only: false,
-  status: 'active',
-})
+type AlertFormState = {
+  loyalty_program_slug: string
+  origin_airport: HubCode
+  destination_airport: string
+  trip_type: 'one_way' | 'round_trip'
+  outbound_date_start: string
+  outbound_date_end: string
+  return_date_start: string
+  return_date_end: string
+  cabin: string
+  passenger_count: number
+  max_miles: string
+  max_taxes_eur: string
+  max_taxes_currency: string
+  direct_only: boolean
+  status: 'active' | 'paused'
+}
 
-const state = reactive(defaultState())
+function defaultState(): AlertFormState {
+  return {
+    loyalty_program_slug: 'flying_blue',
+    origin_airport: 'AMS',
+    destination_airport: '',
+    trip_type: 'one_way',
+    outbound_date_start: '',
+    outbound_date_end: '',
+    return_date_start: '',
+    return_date_end: '',
+    cabin: 'economy',
+    passenger_count: 1,
+    max_miles: '',
+    max_taxes_eur: '',
+    max_taxes_currency: 'EUR',
+    direct_only: false,
+    status: 'active',
+  }
+}
+
+const state = reactive<AlertFormState>(defaultState())
 
 function applyInitial(v: Partial<AlertUpsertBody> | null | undefined) {
   Object.assign(state, defaultState())
   if (!v) return
-  if (v.origin_airport != null) state.origin_airport = v.origin_airport
+  if (v.origin_airport != null && (hubs as readonly string[]).includes(v.origin_airport)) {
+    state.origin_airport = v.origin_airport as HubCode
+  }
   if (v.destination_airport != null) state.destination_airport = v.destination_airport
   if (v.trip_type != null) state.trip_type = v.trip_type
   if (v.outbound_date_start != null) state.outbound_date_start = v.outbound_date_start
@@ -47,8 +70,8 @@ function applyInitial(v: Partial<AlertUpsertBody> | null | undefined) {
   if (v.return_date_end !== undefined) state.return_date_end = v.return_date_end ?? ''
   if (v.cabin != null) state.cabin = v.cabin
   if (v.passenger_count != null) state.passenger_count = v.passenger_count
-  if (v.max_miles !== undefined && v.max_miles !== null) state.max_miles = v.max_miles
-  if (v.max_taxes_eur !== undefined && v.max_taxes_eur !== null) state.max_taxes_eur = v.max_taxes_eur
+  if (v.max_miles !== undefined && v.max_miles !== null) state.max_miles = String(v.max_miles)
+  if (v.max_taxes_eur !== undefined && v.max_taxes_eur !== null) state.max_taxes_eur = String(v.max_taxes_eur)
   if (v.max_taxes_currency != null) state.max_taxes_currency = v.max_taxes_currency
   if (v.direct_only != null) state.direct_only = v.direct_only
   if (v.status != null) state.status = v.status

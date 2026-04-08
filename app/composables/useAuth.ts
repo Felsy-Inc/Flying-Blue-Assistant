@@ -1,17 +1,32 @@
-import type { AuthError } from '@supabase/supabase-js'
+import type { AuthError, SupabaseClient } from '@supabase/supabase-js'
 import { computed } from 'vue'
 import { authErrorToKey } from '~lib/auth/map-auth-error'
+import { normalizeLocale } from '~lib/i18n'
+import { withLocaleInternalPath } from '~lib/i18n/with-locale-internal-path'
+import type { Database } from '~~/types/database.types'
+
+type SupabaseNuxtModule = { client: SupabaseClient<Database> }
 
 export const useAuth = () => {
   const nuxtApp = useNuxtApp()
   const session = useSessionState()
   const { t } = useT()
   const config = useRuntimeConfig()
+  const localePath = useLocalePath()
+  const { locale } = useI18n()
 
-  const configured = computed(() => Boolean(nuxtApp.$supabase?.client))
+  const emailConfirmRedirectUrl = () => {
+    const loc = normalizeLocale(String(locale.value)) ?? 'en'
+    const base = config.public.appUrl.replace(/\/$/, '')
+    return `${base}/auth/confirm?lang=${encodeURIComponent(loc)}`
+  }
+
+  const configured = computed(() =>
+    Boolean((nuxtApp.$supabase as SupabaseNuxtModule | undefined)?.client),
+  )
 
   const client = () => {
-    const c = nuxtApp.$supabase?.client
+    const c = (nuxtApp.$supabase as SupabaseNuxtModule | undefined)?.client
     if (!c) {
       throw new Error('AUTH_UNAVAILABLE')
     }
@@ -27,7 +42,8 @@ export const useAuth = () => {
     } catch {
       // No `public.supabase` (module disabled / misconfigured)
     }
-    await navigateTo(next || '/app', { replace: true })
+    const target = withLocaleInternalPath(next || '/app', localePath)
+    await navigateTo(target, { replace: true })
   }
 
   function isAuthErrorLike(error: unknown): error is AuthError {
@@ -49,7 +65,7 @@ export const useAuth = () => {
   }
 
   const sendMagicLink = async (email: string) => {
-    const emailRedirectTo = `${config.public.appUrl.replace(/\/$/, '')}/auth/confirm`
+    const emailRedirectTo = emailConfirmRedirectUrl()
     const { error } = await client().auth.signInWithOtp({
       email,
       options: {
@@ -60,7 +76,7 @@ export const useAuth = () => {
   }
 
   const signUpWithPassword = async (email: string, password: string) => {
-    const emailRedirectTo = `${config.public.appUrl.replace(/\/$/, '')}/auth/confirm`
+    const emailRedirectTo = emailConfirmRedirectUrl()
     const { data, error } = await client().auth.signUp({
       email,
       password,
@@ -74,7 +90,7 @@ export const useAuth = () => {
 
   const signOut = async () => {
     await client().auth.signOut()
-    await navigateTo('/', { replace: true })
+    await navigateTo(localePath('/'), { replace: true })
   }
 
   return {

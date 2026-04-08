@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
 import { magicLinkSchema, passwordLoginSchema } from '~lib/auth/schemas'
+import type { Locale } from '~lib/i18n/locales'
+import { absoluteUrlForLocale } from '~lib/seo/locale-urls'
 
 definePageMeta({
   layout: 'marketing',
@@ -8,17 +10,29 @@ definePageMeta({
 })
 
 const { t } = useT()
+const { locale } = useAppLocale()
+const localePath = useLocalePath()
+const config = useRuntimeConfig()
+const siteUrl = computed(() => String(config.public.appUrl ?? '').replace(/\/$/, '') || '')
 const toast = useToast()
 const { configured, signInWithPassword, sendMagicLink, translateAuthError } = useAuth()
 
+useMarketingLocaleSeo('/login')
+
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.login')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.login')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.login')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.login'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.login'),
   ogDescription: () => t('seo.pageDescription.login'),
   ogType: 'website',
   twitterCard: 'summary',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.login'),
   ogSiteName: () => t('common.appName'),
+  ogUrl: () =>
+    siteUrl.value ? absoluteUrlForLocale(siteUrl.value, locale.value as Locale, '/login') : undefined,
 })
 
 const tabItems = computed(() => [
@@ -187,11 +201,11 @@ async function onMagicSubmit(e: Event) {
           <div class="flex flex-col gap-3" :aria-busy="authBusy">
             <p class="text-center text-sm text-muted">
               {{ t('auth.links.needAccount') }}
-              <ULink to="/signup" class="font-medium text-primary underline-offset-2 hover:underline">
+              <ULink :to="localePath('/signup')" class="font-medium text-primary underline-offset-2 hover:underline">
                 {{ t('nav.signup') }}
               </ULink>
             </p>
-            <UButton to="/" variant="soft" color="neutral" size="lg" block>
+            <UButton :to="localePath('/')" variant="soft" color="neutral" size="lg" block>
               {{ t('auth.login.backHome') }}
             </UButton>
           </div>

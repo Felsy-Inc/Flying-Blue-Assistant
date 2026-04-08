@@ -9,7 +9,10 @@ const bcp47: Record<Locale, string> = {
 
 /** Parse `YYYY-MM-DD` as a local calendar date (avoids UTC off-by-one). */
 function parseIsoDateLocal(iso: string): Date {
-  const [y, m, d] = iso.split('-').map((n) => Number.parseInt(n, 10))
+  const parts = iso.split('-').map((n) => Number.parseInt(n, 10))
+  const y = parts[0] ?? 0
+  const m = parts[1] ?? 1
+  const d = parts[2] ?? 1
   return new Date(y, m - 1, d)
 }
 

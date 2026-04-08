@@ -18,10 +18,11 @@
 @layer base {
   :root {
     --fba-radius-card: 1rem;
-    /* Light: slightly stronger contact shadow + ambient so cards read above the page */
+    /* Light: slightly stronger contact shadow + ambient so cards read above the page.
+     * Use --ui-color-neutral-* (Nuxt UI v4); --ui-color-gray-* is not part of the default theme. */
     --fba-shadow-card:
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 5.5%, transparent),
-      0 14px 44px -18px color-mix(in srgb, var(--ui-color-gray-950) 15%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-900) 5.5%, transparent),
+      0 14px 44px -18px color-mix(in srgb, var(--ui-color-neutral-900) 15%, transparent);
     --fba-shadow-card-dark:
       0 1px 0 color-mix(in srgb, white 6%, transparent),
       0 18px 50px -24px color-mix(in srgb, black 55%, transparent);
@@ -71,17 +72,17 @@
 
   .fba-panel {
     border-radius: var(--fba-radius-card);
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 92%, var(--ui-color-gray-100));
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 92%, var(--ui-color-neutral-100));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 52%, transparent) inset,
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 4.5%, transparent),
-      0 10px 28px -16px color-mix(in srgb, var(--ui-color-gray-950) 11%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 4.5%, transparent),
+      0 10px 28px -16px color-mix(in srgb, var(--ui-color-neutral-950) 11%, transparent);
   }
 
   .dark .fba-panel {
     border-color: color-mix(in srgb, white 12%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 42%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 42%, var(--ui-bg));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 8%, transparent) inset,
       0 10px 30px -22px color-mix(in srgb, black 62%, transparent);
@@ -89,16 +90,16 @@
 
   .fba-form-section {
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 88%, var(--ui-color-gray-100));
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 88%, var(--ui-color-neutral-100));
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 42%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3.5%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3.5%, transparent);
   }
 
   .dark .fba-form-section {
     border-color: color-mix(in srgb, white 11%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 34%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 34%, var(--ui-bg));
     box-shadow: inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
   }
 
@@ -108,9 +109,9 @@
    */
   .fba-list-row {
     border-radius: 0.75rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 86%, var(--ui-color-gray-100));
-    box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3.5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 86%, var(--ui-color-neutral-100));
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3.5%, transparent);
     transition:
       border-color 180ms ease,
       background-color 180ms ease,
@@ -118,17 +119,17 @@
   }
 
   .fba-list-row:hover {
-    background: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
   }
 
   .dark .fba-list-row {
     border-color: color-mix(in srgb, white 12%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 36%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 36%, var(--ui-bg));
     box-shadow: none;
   }
 
   .dark .fba-list-row:hover {
-    background: color-mix(in srgb, var(--ui-color-gray-900) 42%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 42%, var(--ui-bg));
   }
 
   .fba-list-row--interactive {
@@ -137,15 +138,15 @@
 
   .fba-list-row--interactive:hover {
     border-color: color-mix(in srgb, var(--fba-accent) 28%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
     box-shadow:
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 4%, transparent),
-      0 8px 20px -18px color-mix(in srgb, var(--ui-color-gray-950) 22%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 4%, transparent),
+      0 8px 20px -18px color-mix(in srgb, var(--ui-color-neutral-950) 22%, transparent);
   }
 
   .dark .fba-list-row--interactive:hover {
     border-color: color-mix(in srgb, var(--fba-accent-soft) 36%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 42%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 42%, var(--ui-bg));
     box-shadow: 0 10px 24px -18px color-mix(in srgb, black 60%, transparent);
   }
 
@@ -168,16 +169,16 @@
   }
 
   tbody tr.fba-table-row:not(:last-child) {
-    border-bottom: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 18%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 18%, transparent);
   }
 
   tbody tr.fba-table-row td:not(.fba-pricing-col-pro) {
-    background-color: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+    background-color: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
     transition: background-color 180ms ease;
   }
 
   tbody tr.fba-table-row:hover td:not(.fba-pricing-col-pro) {
-    background-color: color-mix(in srgb, var(--ui-color-gray-50) 68%, var(--ui-color-gray-100));
+    background-color: color-mix(in srgb, var(--ui-color-neutral-50) 68%, var(--ui-color-neutral-100));
   }
 
   tbody tr.fba-table-row:hover td.fba-pricing-col-pro {
@@ -185,11 +186,11 @@
   }
 
   .dark tbody tr.fba-table-row td:not(.fba-pricing-col-pro) {
-    background-color: color-mix(in srgb, var(--ui-color-gray-900) 36%, var(--ui-bg));
+    background-color: color-mix(in srgb, var(--ui-color-neutral-900) 36%, var(--ui-bg));
   }
 
   .dark tbody tr.fba-table-row:hover td:not(.fba-pricing-col-pro) {
-    background-color: color-mix(in srgb, var(--ui-color-gray-900) 42%, var(--ui-bg));
+    background-color: color-mix(in srgb, var(--ui-color-neutral-900) 42%, var(--ui-bg));
   }
 
   .dark tbody tr.fba-table-row:hover td.fba-pricing-col-pro {
@@ -204,7 +205,7 @@
   .fba-panel.fba-list-row-sync:hover {
     box-shadow:
       var(--fba-shadow-card),
-      0 8px 20px -18px color-mix(in srgb, var(--ui-color-gray-950) 24%, transparent);
+      0 8px 20px -18px color-mix(in srgb, var(--ui-color-neutral-950) 24%, transparent);
   }
 
   .dark .fba-panel.fba-list-row-sync:hover {
@@ -230,7 +231,7 @@
 
   .fba-inline-link:hover {
     text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, var(--ui-color-gray-500) 45%, transparent);
+    text-decoration-color: color-mix(in srgb, var(--ui-color-neutral-500) 45%, transparent);
   }
 
   .dark .fba-inline-link:hover {
@@ -331,12 +332,12 @@
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--ui-color-gray-100) 58%, var(--ui-bg)) 0%,
+        color-mix(in srgb, var(--ui-color-neutral-100) 58%, var(--ui-bg)) 0%,
         transparent min(38vh, 22rem)
       ),
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--ui-color-gray-500) 3.5%, transparent) 0%,
+        color-mix(in srgb, var(--ui-color-neutral-500) 3.5%, transparent) 0%,
         transparent 22rem
       );
   }
@@ -356,12 +357,12 @@
   }
 
   .fba-site-footer {
-    border-top: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 22%, var(--ui-border));
+    border-top: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 22%, var(--ui-border));
     background: linear-gradient(
       180deg,
       color-mix(in srgb, var(--fba-accent) 3.5%, transparent) 0%,
-      color-mix(in srgb, var(--ui-color-gray-100) 35%, var(--ui-bg)) 55%,
-      color-mix(in srgb, var(--ui-color-gray-500) 5%, transparent) 100%
+      color-mix(in srgb, var(--ui-color-neutral-100) 35%, var(--ui-bg)) 55%,
+      color-mix(in srgb, var(--ui-color-neutral-500) 5%, transparent) 100%
     );
   }
 
@@ -385,18 +386,18 @@
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
     background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--ui-color-primary-500) 9%, transparent) 0%,
-      color-mix(in srgb, var(--ui-color-gray-50) 88%, var(--ui-color-gray-100)) 42%,
-      color-mix(in srgb, var(--ui-bg) 90%, var(--ui-color-gray-100)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-50) 88%, var(--ui-color-neutral-100)) 42%,
+      color-mix(in srgb, var(--ui-bg) 90%, var(--ui-color-neutral-100)) 100%
     );
     box-shadow:
       0 1px 0 color-mix(in srgb, white 50%, transparent) inset,
-      0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 3.5%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 4%, transparent),
-      0 14px 36px -20px color-mix(in srgb, var(--ui-color-gray-950) 10%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 3.5%, transparent),
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 4%, transparent),
+      0 14px 36px -20px color-mix(in srgb, var(--ui-color-neutral-950) 10%, transparent);
   }
 
   .dark .fba-surface-app-hero {
@@ -404,8 +405,8 @@
     background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--ui-color-primary-500) 15%, transparent) 0%,
-      color-mix(in srgb, var(--ui-color-gray-900) 28%, var(--ui-bg)) 48%,
-      color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-gray-900)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-900) 28%, var(--ui-bg)) 48%,
+      color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-neutral-900)) 100%
     );
     box-shadow:
       0 1px 0 color-mix(in srgb, white 8%, transparent) inset,
@@ -415,18 +416,18 @@
 
   .fba-surface-app-group {
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 72%, var(--ui-color-gray-100));
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 72%, var(--ui-color-neutral-100));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 45%, transparent) inset,
-      0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3.5%, transparent),
-      0 10px 30px -18px color-mix(in srgb, var(--ui-color-gray-950) 9%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent),
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3.5%, transparent),
+      0 10px 30px -18px color-mix(in srgb, var(--ui-color-neutral-950) 9%, transparent);
   }
 
   .dark .fba-surface-app-group {
     border-color: color-mix(in srgb, white 10%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 18%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 18%, var(--ui-bg));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
       0 0 0 1px color-mix(in srgb, white 5%, transparent),
@@ -435,17 +436,17 @@
 
   .fba-surface-app-inset {
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 24%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-100) 48%, var(--ui-bg));
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 24%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-100) 48%, var(--ui-bg));
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 38%, transparent),
-      0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent),
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
   }
 
   .dark .fba-surface-app-inset {
     border-color: color-mix(in srgb, white 9%, transparent);
-    background: color-mix(in srgb, var(--ui-bg) 72%, var(--ui-color-gray-950));
+    background: color-mix(in srgb, var(--ui-bg) 72%, var(--ui-color-neutral-950));
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 4%, transparent),
       0 0 0 1px color-mix(in srgb, white 5%, transparent);
@@ -454,41 +455,41 @@
   /** Search summary strip, date strip, loading placeholder — sits between page and cards */
   .fba-inset-well {
     border-radius: 1rem;
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 68%, var(--ui-color-gray-100));
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 68%, var(--ui-color-neutral-100));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 40%, transparent) inset,
-      0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent),
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
   }
 
   .dark .fba-inset-well {
     border-color: color-mix(in srgb, white 10%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
     box-shadow:
       0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
       0 0 0 1px color-mix(in srgb, white 5%, transparent);
   }
 
   .fba-results-toolbar {
-    border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--ui-color-gray-50) 90%, var(--ui-color-gray-100)) 0%,
-      color-mix(in srgb, var(--ui-color-gray-50) 74%, var(--ui-color-gray-100)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-50) 90%, var(--ui-color-neutral-100)) 0%,
+      color-mix(in srgb, var(--ui-color-neutral-50) 74%, var(--ui-color-neutral-100)) 100%
     );
     box-shadow:
       0 1px 0 color-mix(in srgb, white 42%, transparent) inset,
-      0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent),
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
   }
 
   .dark .fba-results-toolbar {
     border-color: color-mix(in srgb, white 10%, transparent);
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--ui-color-gray-900) 30%, var(--ui-bg)) 0%,
-      color-mix(in srgb, var(--ui-bg) 82%, var(--ui-color-gray-950)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-900) 30%, var(--ui-bg)) 0%,
+      color-mix(in srgb, var(--ui-bg) 82%, var(--ui-color-neutral-950)) 100%
     );
     box-shadow:
       0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
@@ -497,49 +498,49 @@
 
   .fba-search-advanced {
     border-radius: 1rem;
-    border: 1px dashed color-mix(in srgb, var(--ui-color-gray-500) 34%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-50) 76%, var(--ui-color-gray-100));
+    border: 1px dashed color-mix(in srgb, var(--ui-color-neutral-500) 34%, transparent);
+    background: color-mix(in srgb, var(--ui-color-neutral-50) 76%, var(--ui-color-neutral-100));
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 38%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
   }
 
   .dark .fba-search-advanced {
     border-color: color-mix(in srgb, white 14%, transparent);
-    background: color-mix(in srgb, var(--ui-color-gray-900) 20%, var(--ui-bg));
+    background: color-mix(in srgb, var(--ui-color-neutral-900) 20%, var(--ui-bg));
     box-shadow: inset 0 1px 0 color-mix(in srgb, white 5%, transparent);
   }
 
   .fba-empty-surface {
     border-style: dashed;
     border-width: 1px;
-    border-color: color-mix(in srgb, var(--ui-color-gray-500) 34%, transparent);
+    border-color: color-mix(in srgb, var(--ui-color-neutral-500) 34%, transparent);
     background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--ui-color-gray-50) 82%, var(--ui-color-gray-100)) 0%,
-      color-mix(in srgb, var(--ui-color-gray-100) 45%, var(--ui-bg)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-50) 82%, var(--ui-color-neutral-100)) 0%,
+      color-mix(in srgb, var(--ui-color-neutral-100) 45%, var(--ui-bg)) 100%
     );
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 45%, transparent),
-      0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+      0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
   }
 
   .dark .fba-empty-surface {
     border-color: color-mix(in srgb, white 14%, transparent);
     background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--ui-color-gray-900) 28%, var(--ui-bg)) 0%,
-      color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-gray-950)) 100%
+      color-mix(in srgb, var(--ui-color-neutral-900) 28%, var(--ui-bg)) 0%,
+      color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-neutral-950)) 100%
     );
     box-shadow: inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
   }
 
   /** Sticky marketing / app top bars — use with `border-b` (replaces ad-hoc default/% hairlines) */
   .fba-header-bar {
-    border-bottom-color: color-mix(in srgb, var(--ui-color-gray-500) 24%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--ui-color-neutral-500) 24%, transparent);
     box-shadow:
-      0 1px 0 color-mix(in srgb, var(--ui-color-gray-950) 5%, transparent),
-      0 10px 28px -22px color-mix(in srgb, var(--ui-color-gray-950) 7%, transparent);
+      0 1px 0 color-mix(in srgb, var(--ui-color-neutral-950) 5%, transparent),
+      0 10px 28px -22px color-mix(in srgb, var(--ui-color-neutral-950) 7%, transparent);
   }
 
   .dark .fba-header-bar {
@@ -640,7 +641,7 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 14%, transparent);
   mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
 
@@ -680,7 +681,7 @@
 
 /* Marketing inner pages: bottom edge under hero band */
 .fba-marketing-divider-b {
-  border-bottom-color: color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
 }
 
 .dark .fba-marketing-divider-b {
@@ -692,19 +693,19 @@
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--ui-color-gray-950) 3.8%, transparent) 0%,
-      color-mix(in srgb, var(--ui-color-gray-100) 25%, transparent) 18%,
+      color-mix(in srgb, var(--ui-color-neutral-950) 3.8%, transparent) 0%,
+      color-mix(in srgb, var(--ui-color-neutral-100) 25%, transparent) 18%,
       transparent 36%
     ),
     linear-gradient(
         90deg,
-        color-mix(in srgb, var(--ui-color-gray-500) 3.5%, transparent) 0%,
+        color-mix(in srgb, var(--ui-color-neutral-500) 3.5%, transparent) 0%,
         transparent 1px
       )
       0 0 / 40px 40px,
     linear-gradient(
         180deg,
-        color-mix(in srgb, var(--ui-color-gray-500) 3.5%, transparent) 0%,
+        color-mix(in srgb, var(--ui-color-neutral-500) 3.5%, transparent) 0%,
         transparent 1px
       )
       0 0 / 40px 40px;
@@ -785,7 +786,7 @@
 
 /* App shell canvas: soft cruise-altitude wash */
 .fba-app-canvas {
-  background-color: color-mix(in srgb, var(--ui-color-gray-100) 38%, var(--ui-bg));
+  background-color: color-mix(in srgb, var(--ui-color-neutral-100) 38%, var(--ui-bg));
   background-image: radial-gradient(
     ellipse 75% 48% at 48% 0%,
     color-mix(in srgb, var(--fba-accent) 5.5%, transparent),
@@ -804,17 +805,17 @@
 
 /* Pricing: calmer Free vs elevated Pro (light + dark) */
 .fba-pricing-card-free {
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 30%, transparent);
   background: linear-gradient(
     165deg,
-    color-mix(in srgb, var(--ui-color-gray-100) 55%, var(--ui-bg)) 0%,
-    color-mix(in srgb, var(--ui-color-gray-500) 5%, transparent) 45%,
+    color-mix(in srgb, var(--ui-color-neutral-100) 55%, var(--ui-bg)) 0%,
+    color-mix(in srgb, var(--ui-color-neutral-500) 5%, transparent) 45%,
     transparent 70%
   );
   box-shadow:
     0 1px 0 color-mix(in srgb, white 48%, transparent) inset,
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 4%, transparent),
-    0 10px 28px -18px color-mix(in srgb, var(--ui-color-gray-950) 9%, transparent);
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 4%, transparent),
+    0 10px 28px -18px color-mix(in srgb, var(--ui-color-neutral-950) 9%, transparent);
 }
 
 .dark .fba-pricing-card-free {
@@ -856,18 +857,18 @@
 }
 
 .fba-pricing-compare-shell {
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 82%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 82%, var(--ui-color-neutral-100));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 46%, transparent) inset,
-    0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent),
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3.5%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent),
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3.5%, transparent),
     var(--fba-shadow-card);
 }
 
 .dark .fba-pricing-compare-shell {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
     0 0 0 1px color-mix(in srgb, white 5%, transparent),
@@ -875,10 +876,10 @@
 }
 
 .fba-pricing-compare-shell thead tr {
-  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--ui-color-gray-100) 40%, transparent) 0%,
+    color-mix(in srgb, var(--ui-color-neutral-100) 40%, transparent) 0%,
     transparent 100%
   );
 }
@@ -901,7 +902,7 @@
   background: color-mix(in srgb, var(--ui-color-primary-400) 10%, transparent);
 }
 
-/* Landing: product mock — semantic neutrals + rgba shadow (hero no longer clips; gray-* vars are not in Nuxt UI v4). */
+/* Landing: product mock — semantic neutrals + rgba shadow (hero no longer clips). */
 .fba-mock-window {
   border-radius: 1rem;
   border: 1px solid color-mix(in srgb, var(--ui-color-neutral-900) 16%, transparent);
@@ -941,8 +942,8 @@
   min-width: 0;
   flex: 1;
   border-radius: 0.375rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 24%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 72%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 24%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 72%, var(--ui-color-neutral-100));
   padding: 0.125rem 0.5rem;
   text-align: center;
   font-size: 10px;
@@ -953,34 +954,34 @@
 
 .dark .fba-mock-url-bar {
   border-color: color-mix(in srgb, white 9%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 32%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 32%, var(--ui-bg));
 }
 
 .fba-mock-cell {
   border-radius: 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 72%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 72%, var(--ui-color-neutral-100));
   padding: 0.5rem 0.625rem;
-  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent);
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent);
 }
 
 .dark .fba-mock-cell {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 24%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 24%, var(--ui-bg));
   box-shadow: none;
 }
 
 .fba-mock-chip {
   border-radius: 0.375rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 84%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 84%, var(--ui-color-neutral-100));
   padding: 0.25rem 0.5rem;
   font-size: 11px;
 }
 
 .dark .fba-mock-chip {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 28%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 28%, var(--ui-bg));
 }
 
 .fba-mock-chip-primary {
@@ -998,7 +999,7 @@
 }
 
 .fba-mock-divider {
-  border-top: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
 }
 
 .dark .fba-mock-divider {
@@ -1011,15 +1012,15 @@
   justify-content: space-between;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 70%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 70%, var(--ui-color-neutral-100));
   padding: 0.5rem 0.625rem;
-  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent);
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent);
 }
 
 .dark .fba-mock-list-row {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow: none;
 }
 
@@ -1029,15 +1030,15 @@
   justify-content: space-between;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px dashed color-mix(in srgb, var(--ui-color-gray-500) 32%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 76%, var(--ui-color-gray-100));
+  border: 1px dashed color-mix(in srgb, var(--ui-color-neutral-500) 32%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 76%, var(--ui-color-neutral-100));
   padding: 0.5rem 0.625rem;
   opacity: 0.95;
 }
 
 .dark .fba-mock-list-row-dashed {
   border-color: color-mix(in srgb, white 12%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 18%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 18%, var(--ui-bg));
 }
 
 .fba-mock-alert-row {
@@ -1046,15 +1047,15 @@
   justify-content: space-between;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 74%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 74%, var(--ui-color-neutral-100));
   padding: 0.5rem 0.625rem;
-  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent);
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent);
 }
 
 .dark .fba-mock-alert-row {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 26%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 26%, var(--ui-bg));
   box-shadow: none;
 }
 
@@ -1064,23 +1065,23 @@
   justify-content: space-between;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px dashed color-mix(in srgb, var(--ui-color-gray-500) 30%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+  border: 1px dashed color-mix(in srgb, var(--ui-color-neutral-500) 30%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
   padding: 0.5rem 0.625rem;
 }
 
 .dark .fba-mock-alert-row-dashed {
   border-color: color-mix(in srgb, white 11%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 16%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 16%, var(--ui-bg));
 }
 
 .fba-landing-section-slab {
   border-radius: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 22%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-100) 35%, var(--ui-bg));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 22%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-100) 35%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 40%, transparent) inset,
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
 }
 
 .dark .fba-landing-section-slab {
@@ -1091,16 +1092,16 @@
 
 .fba-landing-bento {
   border-radius: 1.25rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 22%, transparent);
   background: linear-gradient(
     155deg,
     color-mix(in srgb, var(--ui-color-primary-500) 9%, transparent) 0%,
-    color-mix(in srgb, var(--ui-color-gray-100) 42%, var(--ui-bg)) 48%,
-    color-mix(in srgb, var(--ui-color-gray-500) 4%, transparent) 100%
+    color-mix(in srgb, var(--ui-color-neutral-100) 42%, var(--ui-bg)) 48%,
+    color-mix(in srgb, var(--ui-color-neutral-500) 4%, transparent) 100%
   );
   box-shadow:
     0 1px 0 color-mix(in srgb, white 38%, transparent) inset,
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
 }
 
 .dark .fba-landing-bento {
@@ -1119,11 +1120,11 @@
 
 .fba-offer-cap {
   position: relative;
-  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
   background: linear-gradient(
     145deg,
     color-mix(in srgb, var(--ui-color-primary-500) 8%, transparent) 0%,
-    color-mix(in srgb, var(--ui-color-gray-50) 76%, var(--ui-color-gray-100)) 45%,
+    color-mix(in srgb, var(--ui-color-neutral-50) 76%, var(--ui-color-neutral-100)) 45%,
     transparent 78%
   );
 }
@@ -1133,7 +1134,7 @@
   background: linear-gradient(
     145deg,
     color-mix(in srgb, var(--ui-color-primary-500) 13%, transparent) 0%,
-    color-mix(in srgb, var(--ui-color-gray-900) 24%, var(--ui-bg)) 48%,
+    color-mix(in srgb, var(--ui-color-neutral-900) 24%, var(--ui-bg)) 48%,
     transparent 76%
   );
 }
@@ -1143,30 +1144,30 @@
   align-items: center;
   gap: 0.375rem;
   border-radius: 9999px;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 84%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 84%, var(--ui-color-neutral-100));
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--ui-text-highlighted);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
 }
 
 .dark .fba-offer-pill {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 26%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 26%, var(--ui-bg));
   box-shadow: none;
 }
 
 .fba-offer-pill--muted {
   font-weight: 500;
   color: var(--ui-text-muted);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 68%, var(--ui-color-gray-100));
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 68%, var(--ui-color-neutral-100));
   box-shadow: none;
 }
 
 .dark .fba-offer-pill--muted {
-  background: color-mix(in srgb, var(--ui-color-gray-900) 20%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 20%, var(--ui-bg));
 }
 
 .fba-offer-pill--cabin {
@@ -1186,10 +1187,10 @@
   display: grid;
   gap: 1rem;
   border-radius: 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 72%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 72%, var(--ui-color-neutral-100));
   padding: 1rem;
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
 }
 
 @media (min-width: 640px) {
@@ -1200,7 +1201,7 @@
 
 .dark .fba-offer-meta-panel {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow: none;
 }
 
@@ -1229,19 +1230,19 @@
   align-items: center;
   justify-content: center;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--ui-color-gray-50) 65%, var(--ui-color-gray-100));
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 65%, var(--ui-color-neutral-100));
   color: var(--ui-text-highlighted);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ui-color-gray-500) 22%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-500) 22%, transparent);
 }
 
 .dark .fba-offer-icon-muted {
-  background: color-mix(in srgb, var(--ui-color-gray-900) 35%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 35%, var(--ui-bg));
   box-shadow: 0 0 0 1px color-mix(in srgb, white 8%, transparent);
 }
 
 @media (min-width: 640px) {
   .fba-offer-seats-split {
-    border-left: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+    border-left: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
     padding-left: 1rem;
   }
 
@@ -1254,14 +1255,14 @@
   display: flex;
   gap: 0.75rem;
   border-radius: 0.5rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
   padding: 0.625rem 0.75rem;
   font-family: ui-monospace, monospace;
   font-size: 0.75rem;
   line-height: 1.625;
   color: var(--ui-text-muted);
-  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent);
+  box-shadow: 0 1px 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent);
 }
 
 @media (min-width: 640px) {
@@ -1272,7 +1273,7 @@
 
 .dark .fba-offer-seg-out {
   border-color: color-mix(in srgb, white 9%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 24%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 24%, var(--ui-bg));
   box-shadow: none;
 }
 
@@ -1280,8 +1281,8 @@
   display: flex;
   gap: 0.75rem;
   border-radius: 0.5rem;
-  border: 1px dashed color-mix(in srgb, var(--ui-color-gray-500) 30%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 62%, var(--ui-color-gray-100));
+  border: 1px dashed color-mix(in srgb, var(--ui-color-neutral-500) 30%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 62%, var(--ui-color-neutral-100));
   padding: 0.625rem 0.75rem;
   font-family: ui-monospace, monospace;
   font-size: 0.75rem;
@@ -1297,7 +1298,7 @@
 
 .dark .fba-offer-seg-ret {
   border-color: color-mix(in srgb, white 11%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 18%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 18%, var(--ui-bg));
 }
 
 .fba-offer-fare-box {
@@ -1341,7 +1342,7 @@
   flex-direction: column;
   justify-content: stretch;
   gap: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
   padding-top: 1.5rem;
 }
 
@@ -1354,7 +1355,7 @@
     width: min(100%, 18rem);
     flex-shrink: 0;
     border-top: none;
-    border-left: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
+    border-left: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
     padding-top: 0;
     padding-left: 2rem;
   }
@@ -1373,7 +1374,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--ui-color-gray-500) 22%, transparent) 50%,
+    color-mix(in srgb, var(--ui-color-neutral-500) 22%, transparent) 50%,
     transparent 100%
   );
 }
@@ -1389,18 +1390,18 @@
 
 .fba-mkt-tile {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 78%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 78%, var(--ui-color-neutral-100));
   padding: 1rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 40%, transparent) inset,
-    0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent),
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent),
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
 }
 
 .dark .fba-mkt-tile {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
     0 0 0 1px color-mix(in srgb, white 5%, transparent);
@@ -1409,13 +1410,13 @@
 .fba-mkt-step-card {
   position: relative;
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 82%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 82%, var(--ui-color-neutral-100));
   padding: 1.5rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 42%, transparent) inset,
-    0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent),
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent),
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
   transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 
@@ -1424,12 +1425,12 @@
   box-shadow:
     0 1px 0 color-mix(in srgb, white 42%, transparent) inset,
     0 0 0 1px color-mix(in srgb, var(--ui-color-primary-500) 12%, transparent),
-    0 4px 20px -6px color-mix(in srgb, var(--ui-color-gray-950) 12%, transparent);
+    0 4px 20px -6px color-mix(in srgb, var(--ui-color-neutral-950) 12%, transparent);
 }
 
 .dark .fba-mkt-step-card {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
     0 0 0 1px color-mix(in srgb, white 5%, transparent);
@@ -1447,18 +1448,18 @@
   display: flex;
   gap: 1rem;
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 76%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 76%, var(--ui-color-neutral-100));
   padding: 1.25rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 38%, transparent) inset,
-    0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent),
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent),
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
 }
 
 .dark .fba-mkt-prop-row {
   border-color: color-mix(in srgb, white 9%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
     0 0 0 1px color-mix(in srgb, white 5%, transparent);
@@ -1466,14 +1467,14 @@
 
 .fba-mkt-cases-band {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 24%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 24%, transparent);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--ui-color-gray-100) 48%, var(--ui-bg)) 0%,
+    color-mix(in srgb, var(--ui-color-neutral-100) 48%, var(--ui-bg)) 0%,
     transparent 100%
   );
   padding: 2rem 1.25rem;
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.5%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.5%, transparent);
 }
 
 @media (min-width: 768px) {
@@ -1486,7 +1487,7 @@
   border-color: color-mix(in srgb, white 9%, transparent);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--ui-color-gray-900) 22%, var(--ui-bg)) 0%,
+    color-mix(in srgb, var(--ui-color-neutral-900) 22%, var(--ui-bg)) 0%,
     transparent 100%
   );
   box-shadow: none;
@@ -1494,48 +1495,48 @@
 
 .fba-mkt-case-card {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 88%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 88%, var(--ui-color-neutral-100));
   padding: 1.25rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 44%, transparent) inset,
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
 }
 
 .dark .fba-mkt-case-card {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 24%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 24%, var(--ui-bg));
   box-shadow: 0 1px 0 color-mix(in srgb, white 5%, transparent) inset;
 }
 
 .fba-mkt-aside-dashed {
   border-radius: 1rem;
-  border: 1px dashed color-mix(in srgb, var(--ui-color-gray-500) 34%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 68%, var(--ui-color-gray-100));
+  border: 1px dashed color-mix(in srgb, var(--ui-color-neutral-500) 34%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 68%, var(--ui-color-neutral-100));
   padding: 1.5rem;
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
 }
 
 .dark .fba-mkt-aside-dashed {
   border-color: color-mix(in srgb, white 12%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 18%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 18%, var(--ui-bg));
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 5%, transparent);
 }
 
 .fba-mkt-teaser-free {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 28%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 84%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 28%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 84%, var(--ui-color-neutral-100));
   padding: 1.5rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 42%, transparent) inset,
-    0 0 0 1px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent),
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 3%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent),
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 3%, transparent);
 }
 
 .dark .fba-mkt-teaser-free {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 24%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 24%, var(--ui-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, white 5%, transparent) inset,
     0 0 0 1px color-mix(in srgb, white 5%, transparent);
@@ -1547,8 +1548,8 @@
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--ui-color-primary-500) 11%, transparent) 0%,
-    color-mix(in srgb, var(--ui-color-gray-50) 72%, var(--ui-color-gray-100)) 48%,
-    color-mix(in srgb, var(--ui-bg) 92%, var(--ui-color-gray-100)) 100%
+    color-mix(in srgb, var(--ui-color-neutral-50) 72%, var(--ui-color-neutral-100)) 48%,
+    color-mix(in srgb, var(--ui-bg) 92%, var(--ui-color-neutral-100)) 100%
   );
   padding: 1.5rem;
   box-shadow:
@@ -1562,8 +1563,8 @@
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--ui-color-primary-500) 16%, transparent) 0%,
-    color-mix(in srgb, var(--ui-color-gray-900) 28%, var(--ui-bg)) 55%,
-    color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-gray-950)) 100%
+    color-mix(in srgb, var(--ui-color-neutral-900) 28%, var(--ui-bg)) 55%,
+    color-mix(in srgb, var(--ui-bg) 88%, var(--ui-color-neutral-950)) 100%
   );
   box-shadow:
     0 1px 0 color-mix(in srgb, white 6%, transparent) inset,
@@ -1573,12 +1574,12 @@
 
 .fba-mkt-faq-shell {
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--ui-color-gray-500) 26%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-50) 68%, var(--ui-color-gray-100));
+  border: 1px solid color-mix(in srgb, var(--ui-color-neutral-500) 26%, transparent);
+  background: color-mix(in srgb, var(--ui-color-neutral-50) 68%, var(--ui-color-neutral-100));
   padding: 2rem 1.25rem;
   box-shadow:
     0 1px 0 color-mix(in srgb, white 38%, transparent) inset,
-    0 1px 2px color-mix(in srgb, var(--ui-color-gray-950) 2.8%, transparent);
+    0 1px 2px color-mix(in srgb, var(--ui-color-neutral-950) 2.8%, transparent);
 }
 
 @media (min-width: 768px) {
@@ -1589,6 +1590,6 @@
 
 .dark .fba-mkt-faq-shell {
   border-color: color-mix(in srgb, white 10%, transparent);
-  background: color-mix(in srgb, var(--ui-color-gray-900) 18%, var(--ui-bg));
+  background: color-mix(in srgb, var(--ui-color-neutral-900) 18%, var(--ui-bg));
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 5%, transparent);
 }

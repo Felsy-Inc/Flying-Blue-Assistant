@@ -38,8 +38,10 @@ export function alertPrefillFromRouteQuery(q: Record<string, unknown>): Partial<
     return_date_end: retEnd ?? null,
     cabin,
     passenger_count: Number.isFinite(pax) && pax > 0 ? pax : 1,
-    max_miles: Number.isFinite(maxMiles) && maxMiles > 0 ? maxMiles : null,
-    max_taxes_eur: Number.isFinite(maxTaxes) && maxTaxes >= 0 ? maxTaxes : null,
+    max_miles:
+      maxMiles !== undefined && Number.isFinite(maxMiles) && maxMiles > 0 ? maxMiles : null,
+    max_taxes_eur:
+      maxTaxes !== undefined && Number.isFinite(maxTaxes) && maxTaxes >= 0 ? maxTaxes : null,
     direct_only: direct,
     status: 'active',
   }

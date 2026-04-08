@@ -17,6 +17,6 @@ export async function requireSupabaseSession(event: Parameters<typeof serverSupa
     throw createError({ statusCode: 401, statusMessage: 'unauthorized' })
   }
 
-  const supabase = await serverSupabaseClient(event)
+  const supabase = (await serverSupabaseClient(event)) as SupabaseClient<Database>
   return { userId, supabase }
 }

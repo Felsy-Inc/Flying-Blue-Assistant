@@ -11,11 +11,13 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@fontsource/plus-jakarta-sans": "^5.2.8",
     "@nuxt/ui": "^4.5.1",
+    "@nuxtjs/i18n": "^10.2.0",
     "@nuxtjs/supabase": "2.0.4",
     "@supabase/supabase-js": "2.99.3",
     "nuxt": "^4.4.2",
@@ -28,7 +30,9 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/lucide": "^1.2.98",
     "@types/node": "25.5.0",
-    "typescript": "5.9.3"
+    "@vue/language-core": "^3.2.6",
+    "typescript": "5.9.3",
+    "vue-tsc": "^3.2.6"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

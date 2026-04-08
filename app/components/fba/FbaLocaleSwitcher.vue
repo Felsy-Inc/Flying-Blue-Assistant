@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { locales, type Locale } from '~lib/i18n'
 
 const { t } = useT()
-const { locale, setLocale } = useAppLocale()
+const { locale, setLocale } = useI18n()
 
 const localeItems = computed(() =>
   locales.map((code) => ({
@@ -13,8 +13,10 @@ const localeItems = computed(() =>
 )
 
 const localeModel = computed({
-  get: () => locale.value,
-  set: (v: Locale) => setLocale(v),
+  get: () => locale.value as Locale,
+  set: (v: Locale) => {
+    void setLocale(v)
+  },
 })
 </script>
 

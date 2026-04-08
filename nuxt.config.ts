@@ -1,7 +1,11 @@
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import type { Logger } from 'vite'
+import type { NuxtConfig } from 'nuxt/schema'
 import { applyProjectDotenv } from './env/load-dotenv'
+
+type ViteCustomLogger = {
+  warn?: (msg: string | unknown, options?: unknown) => void
+}
 
 const projectRoot = dirname(fileURLToPath(import.meta.url))
 applyProjectDotenv(projectRoot)
@@ -18,14 +22,14 @@ function envTruthy(v: string | undefined): boolean {
 }
 
 /** Tailwind v4 + Nuxt polyfill emit transform steps without CSS maps → noisy Vite warns (harmless). */
-const patchedViteLoggers = new WeakSet<Logger>()
+const patchedViteLoggers = new WeakSet<ViteCustomLogger>()
 
-function patchViteLogger(config: { customLogger?: Logger }) {
-  const logger = config.customLogger
+function patchViteLogger(config: { customLogger?: ViteCustomLogger }) {
+  const logger = config.customLogger as ViteCustomLogger | undefined
   if (!logger?.warn || patchedViteLoggers.has(logger)) return
   patchedViteLoggers.add(logger)
-  const originalWarn = logger.warn.bind(logger)
-  logger.warn = (msg, options) => {
+  const originalWarn = logger.warn!.bind(logger)
+  logger.warn = (msg: string | unknown, options?: unknown) => {
     const text = typeof msg === 'string' ? msg : String(msg)
     if (
       text.includes('Sourcemap is likely to be incorrect') &&
@@ -55,7 +59,8 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    'vite:configResolved': patchViteLogger,
+    /** Nuxt passes full Vite config; we only touch `customLogger.warn` signature noise. */
+    'vite:configResolved': (config) => patchViteLogger(config as { customLogger?: ViteCustomLogger }),
   },
 
   /**
@@ -89,14 +94,34 @@ export default defineNuxtConfig({
     '/pricing': { prerender: false },
     '/login': { prerender: false },
     '/signup': { prerender: false },
+    '/nl/**': { prerender: false },
+    '/fr/**': { prerender: false },
     '/app/**': { prerender: false },
     '/auth/**': { prerender: false },
-  },
+  } as NuxtConfig['routeRules'],
 
   modules: [
+    '@nuxtjs/i18n',
     '@nuxt/ui',
     ...(enableSupabaseModule ? ['@nuxtjs/supabase'] : []),
   ],
+
+  i18n: {
+    vueI18n: fileURLToPath(new URL('./i18n/i18n.config.ts', import.meta.url)),
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English' },
+      { code: 'nl', language: 'nl-NL', name: 'Nederlands' },
+      { code: 'fr', language: 'fr-FR', name: 'Français' },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'fba-locale',
+      fallbackLocale: 'en',
+      redirectOn: 'root',
+    },
+  },
 
   css: ['~/assets/css/main.css'],
 
@@ -119,10 +144,18 @@ export default defineNuxtConfig({
       supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
       supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY,
       appUrl: process.env.NUXT_PUBLIC_APP_URL ?? 'http://localhost:3000',
+      /** ISO date (YYYY-MM-DD) for sitemap `<lastmod>`; set `NUXT_PUBLIC_SITEMAP_LASTMOD` to override. */
+      sitemapLastmod:
+        process.env.NUXT_PUBLIC_SITEMAP_LASTMOD ?? new Date().toISOString().slice(0, 10),
       /** Prefer `NUXT_PUBLIC_*` (Nuxt runtime override); `BILLING_ENABLED` works after `env/load-dotenv` runs. */
       billingEnabled: envTruthy(
         process.env.NUXT_PUBLIC_BILLING_ENABLED ?? process.env.BILLING_ENABLED,
       ),
+      /**
+       * Absolute image URL, or site-relative path (e.g. `/og.png`) resolved against `appUrl`.
+       * Leave empty if you have no share image yet—do not point at a missing file.
+       */
+      ogImageUrl: process.env.NUXT_PUBLIC_OG_IMAGE_URL ?? '',
 
       featureFlags: {
         useMockProvider: process.env.USE_MOCK_PROVIDER === 'true',
@@ -148,7 +181,8 @@ export default defineNuxtConfig({
           secure: process.env.NODE_ENV === 'production',
         },
         redirectOptions: {
-          login: '/login',
+          /** Locale-aware login: `/auth/login` redirects to `localePath('/login')`. */
+          login: '/auth/login',
           callback: '/auth/confirm',
           /** Only `/app` requires a session (avoids breaking prerender of marketing pages). */
           include: ['/app', '/app/*'],

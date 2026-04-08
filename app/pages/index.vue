@@ -1,25 +1,32 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { fbaMarketingAccordionUi } from '~lib/fbaMarketingUi'
+import type { Locale } from '~lib/i18n/locales'
+import { buildFaqPageJsonLd } from '~lib/seo/faq-jsonld'
+import { absoluteUrlForLocale } from '~lib/seo/locale-urls'
 
 definePageMeta({
   layout: 'marketing',
 })
 
 const { t } = useT()
+const { locale } = useAppLocale()
+const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const siteUrl = computed(() => String(config.public.appUrl ?? '').replace(/\/$/, '') || '')
+
+useMarketingLocaleSeo('/')
 
 const heroLinks = computed(() => [
   {
     label: t('home.ctaBrowse'),
-    to: '/app/search',
+    to: localePath('/app/search'),
     color: 'primary' as const,
     size: 'xl' as const,
   },
   {
     label: t('home.ctaPricing'),
-    to: '/pricing',
+    to: localePath('/pricing'),
     color: 'neutral' as const,
     variant: 'outline' as const,
     size: 'xl' as const,
@@ -27,10 +34,10 @@ const heroLinks = computed(() => [
 ])
 
 const midLinks = computed(() => [
-  { label: t('home.ctaMidPrimary'), to: '/app/search', color: 'primary' as const, size: 'lg' as const },
+  { label: t('home.ctaMidPrimary'), to: localePath('/app/search'), color: 'primary' as const, size: 'lg' as const },
   {
     label: t('home.ctaMidSecondary'),
-    to: '/pricing',
+    to: localePath('/pricing'),
     color: 'neutral' as const,
     variant: 'outline' as const,
     size: 'lg' as const,
@@ -38,7 +45,12 @@ const midLinks = computed(() => [
 ])
 
 const bottomLinks = computed(() => [
-  { label: t('home.ctaBottomPrimary'), to: '/pricing', color: 'primary' as const, size: 'lg' as const },
+  {
+    label: t('home.ctaBottomPrimary'),
+    to: `${localePath('/pricing')}#pricing-faq`,
+    color: 'primary' as const,
+    size: 'lg' as const,
+  },
 ])
 
 const howSteps = computed(() => [
@@ -86,38 +98,69 @@ const faqItems = computed(() => [
   { label: t('home.faq4q'), content: t('home.faq4a') },
   { label: t('home.faq5q'), content: t('home.faq5a') },
   { label: t('home.faq6q'), content: t('home.faq6a') },
+  { label: t('home.faq7q'), content: t('home.faq7a') },
 ])
 
-const jsonLd = computed(() =>
-  JSON.stringify({
-    '@context': 'https://schema.org',
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.home')
+
+const faqJsonLd = computed(() =>
+  buildFaqPageJsonLd(
+    faqItems.value.map((item) => ({ question: item.label, answer: item.content })),
+  ),
+)
+
+const jsonLd = computed(() => {
+  const base = siteUrl.value || undefined
+  const website: Record<string, unknown> = {
+    '@type': 'WebSite',
+    name: t('common.appName'),
+    description: t('seo.defaultDescription'),
+    inLanguage: ['en', 'nl', 'fr'],
+    publisher: { '@type': 'Organization', name: t('common.appName') },
+  }
+  if (base) {
+    website['@id'] = `${base}/#website`
+    website.url = base
+  }
+  const software: Record<string, unknown> = {
     '@type': 'SoftwareApplication',
     name: t('common.appName'),
     applicationCategory: 'TravelApplication',
     operatingSystem: 'Web',
     description: t('seo.defaultDescription'),
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
-    ...(siteUrl.value ? { url: siteUrl.value } : {}),
-  }),
-)
+  }
+  if (base) software.url = base
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [website, software],
+  })
+})
 
 useSeoMeta({
   title: () => t('seo.pageTitle.home'),
-  ogTitle: () => t('seo.pageTitle.home'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.home'),
   ogDescription: () => t('seo.pageDescription.home'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.home'),
   ogSiteName: () => t('common.appName'),
+  ogUrl: () =>
+    siteUrl.value ? absoluteUrlForLocale(siteUrl.value, locale.value as Locale, '/') : undefined,
 })
 
 useHead(() => ({
-  link: siteUrl.value ? [{ rel: 'canonical', href: `${siteUrl.value}/` }] : [],
   script: [
     {
       key: 'fba-software-jsonld',
       type: 'application/ld+json',
       innerHTML: jsonLd.value,
+    },
+    {
+      key: 'fba-faq-jsonld',
+      type: 'application/ld+json',
+      innerHTML: faqJsonLd.value,
     },
   ],
 }))
@@ -125,7 +168,7 @@ useHead(() => ({
 
 <template>
   <UPage>
-    <!-- Custom hero: split layout + product mock (less generic than UPageHero) -->
+    <!-- Custom hero: split layout + product preview -->
     <div class="fba-hero-backdrop">
       <FbaPageContainer class="relative pt-10 pb-12 md:pt-14 md:pb-20">
         <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-14">
@@ -314,7 +357,7 @@ useHead(() => ({
           </div>
         </section>
 
-        <!-- Product preview: second mock -->
+        <!-- Product preview: alerts -->
         <section class="py-6 md:py-10" aria-labelledby="home-preview-heading">
           <div class="mb-8 flex max-w-2xl flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div class="space-y-2">
@@ -438,14 +481,14 @@ useHead(() => ({
             </div>
           </div>
           <div class="mt-6">
-            <UButton to="/pricing" color="primary" variant="soft" size="lg">
+            <UButton :to="localePath('/pricing')" color="primary" variant="soft" size="lg">
               {{ t('home.pricingTeaserCta') }}
             </UButton>
           </div>
         </section>
 
         <!-- FAQ -->
-        <section class="fba-mkt-faq-shell" aria-labelledby="home-faq-heading">
+        <section id="faq" class="fba-mkt-faq-shell scroll-mt-24" aria-labelledby="home-faq-heading">
           <h2
             id="home-faq-heading"
             class="mb-6 text-xl font-semibold tracking-tight text-highlighted md:text-2xl"

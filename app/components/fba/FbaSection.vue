@@ -3,6 +3,8 @@ withDefaults(
   defineProps<{
     title?: string
     description?: string
+    /** Stable id for in-page anchors (e.g. FAQ). */
+    sectionId?: string
     /** Tighter rhythm for in-app pages (dashboard, alerts, etc.). */
     variant?: 'default' | 'app'
   }>(),
@@ -11,7 +13,7 @@ withDefaults(
 </script>
 
 <template>
-  <section :class="variant === 'app' ? 'py-6 md:py-8' : 'py-10 md:py-14'">
+  <section :id="sectionId" :class="variant === 'app' ? 'py-6 md:py-8' : 'py-10 md:py-14'">
     <div
       v-if="title || description"
       :class="[

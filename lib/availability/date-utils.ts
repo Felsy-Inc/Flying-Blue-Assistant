@@ -1,6 +1,9 @@
 /** Calendar arithmetic in UTC for `YYYY-MM-DD` (award dates are date-only). */
 export function parseIsoDateUtc(iso: string): Date {
-  const [y, m, d] = iso.split('-').map((n) => Number.parseInt(n, 10))
+  const parts = iso.split('-').map((n) => Number.parseInt(n, 10))
+  const y = parts[0] ?? 0
+  const m = parts[1] ?? 1
+  const d = parts[2] ?? 1
   return new Date(Date.UTC(y, m - 1, d))
 }
 

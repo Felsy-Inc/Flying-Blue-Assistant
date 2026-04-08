@@ -3,7 +3,8 @@ import type { Database } from './database.types'
 
 declare module '#app' {
   interface NuxtApp {
-    $supabase: {
+    /** Present when `@nuxtjs/supabase` is enabled and configured. */
+    $supabase?: {
       client: SupabaseClient<Database>
     }
   }

@@ -9,6 +9,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useT()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -23,7 +24,7 @@ const { t } = useT()
     :ui="{ root: 'text-start' }"
   >
     <template v-if="showUpgradeCta" #actions>
-      <UButton to="/pricing" color="primary" size="sm" variant="solid">
+      <UButton :to="localePath('/pricing')" color="primary" size="sm" variant="solid">
         {{ t('usage.upgradeCta') }}
       </UButton>
     </template>

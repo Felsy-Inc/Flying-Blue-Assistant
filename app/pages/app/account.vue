@@ -3,9 +3,11 @@ import { computed, onMounted, ref } from 'vue'
 
 definePageMeta({
   layout: 'app',
+  i18n: false,
 })
 
 const { t, locale } = useT()
+const localePath = useLocalePath()
 const route = useRoute()
 const toast = useToast()
 const config = useRuntimeConfig()
@@ -53,7 +55,7 @@ onMounted(() => {
 
     await refresh()
     toast.add({ title: t('dashboard.checkoutSuccessToast'), color: 'success' })
-    void navigateTo('/app/account', { replace: true })
+    void navigateTo(localePath('/app/account'), { replace: true })
   })()
 })
 
@@ -79,13 +81,17 @@ async function onSignOut() {
   }
 }
 
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.appAccount')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.appAccount')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.appAccount')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.appAccount'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.appAccount'),
   ogDescription: () => t('seo.pageDescription.appAccount'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.appAccount'),
   ogSiteName: () => t('common.appName'),
 })
 </script>
@@ -158,7 +164,7 @@ useSeoMeta({
           {{ t('dashboard.cancelAtPeriodEnd') }}
         </p>
         <div class="flex flex-wrap gap-2 pt-1">
-          <UButton v-if="billingEnabled && planForBadge === 'free'" to="/pricing" color="primary" size="lg">
+          <UButton v-if="billingEnabled && planForBadge === 'free'" :to="localePath('/pricing')" color="primary" size="lg">
             {{ t('pricing.ctaUpgrade') }}
           </UButton>
           <UButton

@@ -3,22 +3,29 @@ import { nextTick, onMounted, ref, watch } from 'vue'
 import { isApiValidationFailed, parseFetchError } from '~lib/api/fetch-error'
 import type { AvailabilitySearchBodyInput } from '~lib/availability/search-request.zod'
 import type { AvailabilitySearchResponse, NormalizedAwardOffer } from '~lib/availability/domain'
+import FbaSearchForm from '~/components/fba/search/FbaSearchForm.vue'
 
 definePageMeta({
   layout: 'app',
+  i18n: false,
 })
 
 const { t } = useT()
+const localePath = useLocalePath()
 const route = useRoute()
 const toast = useToast()
 
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.appSearch')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.appSearch')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.appSearch')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.appSearch'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.appSearch'),
   ogDescription: () => t('seo.pageDescription.appSearch'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.appSearch'),
   ogSiteName: () => t('common.appName'),
 })
 
@@ -52,10 +59,12 @@ const searchQuotaBlocked = computed(() => overview.value?.usage.searchQuotaExhau
 const showSearchUpgrade = computed(() => overview.value?.planTier !== 'pro')
 
 function onCreateAlert(offer: NormalizedAwardOffer) {
-  navigateTo({
-    path: '/app/alerts',
-    query: buildAlertQuery(offer, lastPassengers.value),
-  })
+  void navigateTo(
+    localePath({
+      path: '/app/alerts',
+      query: buildAlertQuery(offer, lastPassengers.value),
+    }),
+  )
 }
 
 async function runSearch(body: AvailabilitySearchBodyInput) {
@@ -98,11 +107,16 @@ async function runSearch(body: AvailabilitySearchBodyInput) {
   }
 }
 
+const HUB_CODES = ['AMS', 'BRU', 'CDG'] as const
+type HubCode = (typeof HUB_CODES)[number]
+
 function applyRoutePrefill() {
   const q = route.query
   if (!q.origin || typeof q.origin !== 'string') return
+  const originUpper = q.origin.toUpperCase()
+  if (!(HUB_CODES as readonly string[]).includes(originUpper)) return
   formRef.value?.applyPrefill({
-    origin: q.origin.toUpperCase(),
+    origin: originUpper as HubCode,
     destination: typeof q.destination === 'string' ? q.destination.toUpperCase() : '',
     tripType: q.tripType === 'round_trip' ? 'round_trip' : 'one_way',
     outboundDate: typeof q.outbound === 'string' ? q.outbound : '',

@@ -20,7 +20,7 @@ export async function getSubscriptionForUser(
     if (isMissingDbObjectError(error)) return null
     throw error
   }
-  return data
+  return (data ?? null) as SubRow | null
 }
 
 /** Webhook / billing admin: upsert by `user_id` and mirror tier to `profiles`. */

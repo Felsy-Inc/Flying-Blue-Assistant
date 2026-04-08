@@ -1,8 +1,11 @@
 /**
  * Redirect authenticated users away from login/signup (when Supabase session exists).
  */
+import { withLocaleInternalPath } from '~lib/i18n/with-locale-internal-path'
+
 export default defineNuxtRouteMiddleware(() => {
-  if (!useNuxtApp().$supabase?.client) return
+  const supa = useNuxtApp().$supabase as { client?: unknown } | undefined
+  if (!supa?.client) return
 
   const session = useSessionState()
   if (!session.value) return
@@ -13,5 +16,7 @@ export default defineNuxtRouteMiddleware(() => {
   } catch {
     /* no redirect cookie integration */
   }
-  return navigateTo(nextPath || '/app', { replace: true })
+  const localePath = useLocalePath()
+  const target = withLocaleInternalPath(nextPath || '/app', localePath)
+  return navigateTo(target, { replace: true })
 })

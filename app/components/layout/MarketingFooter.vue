@@ -3,6 +3,7 @@ import { computed } from 'vue'
 
 const year = new Date().getFullYear()
 const { t } = useT()
+const localePath = useLocalePath()
 
 const copyright = computed(() =>
   t('footer.copyright', { year, appName: t('common.appName') }),
@@ -35,19 +36,22 @@ const copyright = computed(() =>
             {{ t('footer.colProduct') }}
           </p>
           <nav class="flex flex-col gap-2 text-sm" :aria-label="t('footer.colProduct')">
-            <NuxtLink to="/" class="fba-inline-link text-muted hover:text-default">
+            <NuxtLink :to="localePath('/')" class="fba-inline-link text-muted hover:text-default">
               {{ t('nav.home') }}
             </NuxtLink>
-            <NuxtLink to="/pricing" class="fba-inline-link text-muted hover:text-default">
+            <NuxtLink :to="localePath('/pricing')" class="fba-inline-link text-muted hover:text-default">
               {{ t('nav.pricing') }}
             </NuxtLink>
-            <NuxtLink to="/app/search" class="fba-inline-link text-muted hover:text-default">
+            <NuxtLink :to="`${localePath('/')}#faq`" class="fba-inline-link text-muted hover:text-default">
+              {{ t('nav.faq') }}
+            </NuxtLink>
+            <NuxtLink :to="localePath('/app/search')" class="fba-inline-link text-muted hover:text-default">
               {{ t('nav.search') }}
             </NuxtLink>
-            <NuxtLink to="/login" class="fba-inline-link text-muted hover:text-default">
+            <NuxtLink :to="localePath('/login')" class="fba-inline-link text-muted hover:text-default">
               {{ t('nav.login') }}
             </NuxtLink>
-            <NuxtLink to="/signup" class="fba-inline-link-primary text-primary hover:text-primary/90">
+            <NuxtLink :to="localePath('/signup')" class="fba-inline-link-primary text-primary hover:text-primary/90">
               {{ t('nav.signup') }}
             </NuxtLink>
           </nav>
@@ -59,9 +63,6 @@ const copyright = computed(() =>
           </p>
           <p class="text-xs leading-relaxed text-dimmed">
             {{ t('footer.legalShort') }}
-          </p>
-          <p class="text-xs leading-relaxed text-dimmed">
-            {{ t('footer.codenameNote', { codename: t('common.codename') }) }}
           </p>
         </div>
       </div>

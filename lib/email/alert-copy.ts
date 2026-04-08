@@ -32,7 +32,7 @@ export type AlertEmailCopy = {
 }
 
 const en: AlertEmailCopy = {
-  brandName: 'Flying Blue Assistant',
+  brandName: 'AwardFlightAlert',
   subjectRoute: 'Award alert: {origin} → {destination}',
   headline: 'Your award alert',
   intro: 'Here is a summary of the alert we are watching for you.',
@@ -55,14 +55,14 @@ const en: AlertEmailCopy = {
   },
   cta: 'View in app',
   footer: 'You are receiving this because alerts are enabled for your account.',
-  sampleBadge: 'Sample preview',
+  sampleBadge: 'Preview',
   subjectNewMatches: 'New award options: {origin} → {destination}',
   headlineMatch: 'New options for your alert',
   introMatch: 'We found award availability that fits your alert criteria.',
 }
 
 const nl: AlertEmailCopy = {
-  brandName: 'Flying Blue Assistant',
+  brandName: 'AwardFlightAlert',
   subjectRoute: 'Award alert: {origin} → {destination}',
   headline: 'Je award alert',
   intro: 'Hier is een samenvatting van de alert die we voor je monitoren.',
@@ -92,7 +92,7 @@ const nl: AlertEmailCopy = {
 }
 
 const fr: AlertEmailCopy = {
-  brandName: 'Flying Blue Assistant',
+  brandName: 'AwardFlightAlert',
   subjectRoute: 'Alerte primes : {origin} → {destination}',
   headline: 'Votre alerte primes',
   intro: 'Voici le récapitulatif de l’alerte que nous surveillons pour vous.',
@@ -115,7 +115,7 @@ const fr: AlertEmailCopy = {
   },
   cta: 'Voir dans l’app',
   footer: 'Vous recevez cet e-mail car les alertes sont activées pour votre compte.',
-  sampleBadge: 'Aperçu exemple',
+  sampleBadge: 'Aperçu',
   subjectNewMatches: 'Nouvelles options primes : {origin} → {destination}',
   headlineMatch: 'Nouvelles options pour votre alerte',
   introMatch: 'Nous avons trouvé de la disponibilité correspondant à votre alerte.',

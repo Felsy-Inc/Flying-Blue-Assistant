@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 
 const route = useRoute()
 const { t } = useT()
+const localePath = useLocalePath()
 const session = useSessionState()
 
 const mobileOpen = ref(false)
@@ -40,7 +41,7 @@ const navPillActiveClass =
           </UButton>
 
           <UButton
-            to="/"
+            :to="localePath('/')"
             variant="ghost"
             color="neutral"
             class="-ms-1 gap-2.5 font-semibold tracking-wide lg:-ms-2"
@@ -56,7 +57,7 @@ const navPillActiveClass =
           :aria-label="t('header.mainNav')"
         >
           <UButton
-            to="/"
+            :to="localePath('/')"
             exact
             variant="ghost"
             color="neutral"
@@ -67,7 +68,7 @@ const navPillActiveClass =
             {{ t('nav.home') }}
           </UButton>
           <UButton
-            to="/pricing"
+            :to="localePath('/pricing')"
             variant="ghost"
             color="neutral"
             size="sm"
@@ -76,6 +77,26 @@ const navPillActiveClass =
           >
             {{ t('nav.pricing') }}
           </UButton>
+          <UButton
+            :to="localePath('/app/search')"
+            variant="ghost"
+            color="neutral"
+            size="sm"
+            class="rounded-full px-3.5"
+            :active-class="navPillActiveClass"
+          >
+            {{ t('nav.search') }}
+          </UButton>
+          <UButton
+            :to="`${localePath('/')}#faq`"
+            variant="ghost"
+            color="neutral"
+            size="sm"
+            class="rounded-full px-3.5"
+            :active-class="navPillActiveClass"
+          >
+            {{ t('nav.faq') }}
+          </UButton>
         </nav>
 
         <div class="flex flex-wrap items-center justify-end gap-1.5 sm:gap-2">
@@ -83,15 +104,15 @@ const navPillActiveClass =
           <FbaThemeToggle />
 
           <div v-if="session" class="hidden items-center gap-1.5 sm:flex">
-            <UButton to="/app" color="primary" size="sm">
+            <UButton :to="localePath('/app')" color="primary" size="sm">
               {{ t('nav.dashboard') }}
             </UButton>
           </div>
           <div v-else class="hidden items-center gap-1.5 sm:flex">
-            <UButton to="/login" variant="ghost" color="neutral" size="sm">
+            <UButton :to="localePath('/login')" variant="ghost" color="neutral" size="sm">
               {{ t('nav.login') }}
             </UButton>
-            <UButton to="/signup" color="primary" size="sm">
+            <UButton :to="localePath('/signup')" color="primary" size="sm">
               {{ t('nav.signup') }}
             </UButton>
           </div>
@@ -99,7 +120,7 @@ const navPillActiveClass =
           <UButton
             v-if="session"
             class="sm:hidden"
-            to="/app"
+            :to="localePath('/app')"
             color="primary"
             size="sm"
           >
@@ -108,7 +129,7 @@ const navPillActiveClass =
           <UButton
             v-else
             class="sm:hidden"
-            to="/login"
+            :to="localePath('/login')"
             color="primary"
             size="sm"
           >
@@ -126,21 +147,28 @@ const navPillActiveClass =
       <template #body>
         <nav class="flex flex-col gap-1 p-2" :aria-label="t('header.mainNav')">
           <NuxtLink
-            to="/"
+            :to="localePath('/')"
             class="rounded-lg px-3 py-2.5"
             :class="navLinkClass"
           >
             {{ t('nav.home') }}
           </NuxtLink>
           <NuxtLink
-            to="/pricing"
+            :to="localePath('/pricing')"
             class="rounded-lg px-3 py-2.5"
             :class="navLinkClass"
           >
             {{ t('nav.pricing') }}
           </NuxtLink>
           <NuxtLink
-            to="/app/search"
+            :to="`${localePath('/')}#faq`"
+            class="rounded-lg px-3 py-2.5"
+            :class="navLinkClass"
+          >
+            {{ t('nav.faq') }}
+          </NuxtLink>
+          <NuxtLink
+            :to="localePath('/app/search')"
             class="rounded-lg px-3 py-2.5"
             :class="navLinkClass"
           >
@@ -149,7 +177,7 @@ const navPillActiveClass =
           <hr class="my-2 border-default/60">
           <template v-if="session">
             <NuxtLink
-              to="/app"
+              :to="localePath('/app')"
               class="fba-inline-link-primary rounded-lg px-3 py-2.5 text-sm hover:bg-primary/5"
             >
               {{ t('nav.dashboard') }}
@@ -157,14 +185,14 @@ const navPillActiveClass =
           </template>
           <template v-else>
             <NuxtLink
-              to="/login"
+              :to="localePath('/login')"
               class="rounded-lg px-3 py-2.5"
               :class="navLinkClass"
             >
               {{ t('nav.login') }}
             </NuxtLink>
             <NuxtLink
-              to="/signup"
+              :to="localePath('/signup')"
               class="fba-inline-link-primary rounded-lg px-3 py-2.5 text-sm hover:bg-primary/5"
             >
               {{ t('nav.signup') }}

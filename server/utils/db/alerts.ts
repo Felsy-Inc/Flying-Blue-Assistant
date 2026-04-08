@@ -4,6 +4,7 @@ import { isMissingDbObjectError } from './supabase-errors'
 
 type AlertInsert = Database['public']['Tables']['alerts']['Insert']
 type AlertUpdate = Database['public']['Tables']['alerts']['Update']
+type AlertRow = Database['public']['Tables']['alerts']['Row']
 
 export async function countActiveAlertsForUser(client: SupabaseClient<Database>, userId: string) {
   const { count, error } = await client
@@ -19,7 +20,10 @@ export async function countActiveAlertsForUser(client: SupabaseClient<Database>,
   return count ?? 0
 }
 
-export async function listAlertsForUser(client: SupabaseClient<Database>, userId: string) {
+export async function listAlertsForUser(
+  client: SupabaseClient<Database>,
+  userId: string,
+): Promise<AlertRow[]> {
   const { data, error } = await client
     .from('alerts')
     .select('*')
@@ -30,14 +34,14 @@ export async function listAlertsForUser(client: SupabaseClient<Database>, userId
     if (isMissingDbObjectError(error)) return []
     throw error
   }
-  return data ?? []
+  return (data ?? []) as AlertRow[]
 }
 
 export async function getAlertByIdForUser(
   client: SupabaseClient<Database>,
   alertId: string,
   userId: string,
-) {
+): Promise<AlertRow | null> {
   const { data, error } = await client
     .from('alerts')
     .select('*')
@@ -49,7 +53,7 @@ export async function getAlertByIdForUser(
     if (isMissingDbObjectError(error)) return null
     throw error
   }
-  return data
+  return (data ?? null) as AlertRow | null
 }
 
 export async function insertAlert(client: SupabaseClient<Database>, row: AlertInsert) {

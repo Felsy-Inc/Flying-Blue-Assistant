@@ -1,27 +1,54 @@
 <script setup lang="ts">
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { nextTick, onMounted, ref } from 'vue'
+import { normalizeLocale } from '~lib/i18n'
 
 definePageMeta({
   layout: 'marketing',
+  i18n: false,
 })
 
+const route = useRoute()
+const router = useRouter()
+const { setLocale } = useI18n()
+
+const rawLang = route.query.lang
+const langParam =
+  typeof rawLang === 'string' ? rawLang : Array.isArray(rawLang) ? rawLang[0] : undefined
+const qLang = normalizeLocale(langParam)
+if (qLang) {
+  await setLocale(qLang)
+}
+
 const { t } = useT()
+const localePath = useLocalePath()
 const { redirectAfterLogin } = useAuth()
 
 const status = ref<'loading' | 'ok' | 'err'>('loading')
 
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.confirm')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.confirm')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.confirm')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.confirm'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.confirm'),
   ogDescription: () => t('seo.pageDescription.confirm'),
   ogType: 'website',
   twitterCard: 'summary',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.confirm'),
   ogSiteName: () => t('common.appName'),
 })
 
 onMounted(async () => {
-  const client = useNuxtApp().$supabase?.client
+  const q = { ...route.query }
+  if (q.lang != null) {
+    delete q.lang
+    await router.replace({ path: route.path, query: q, hash: route.hash })
+  }
+
+  const supabase = useNuxtApp().$supabase as { client: SupabaseClient } | undefined
+  const client = supabase?.client
   if (!client) {
     status.value = 'err'
     return
@@ -101,7 +128,7 @@ onMounted(async () => {
           <div class="flex flex-col gap-2">
             <UButton
               v-if="status === 'err'"
-              to="/login"
+              :to="localePath('/login')"
               color="primary"
               size="lg"
               block
@@ -110,14 +137,14 @@ onMounted(async () => {
             </UButton>
             <UButton
               v-else-if="status === 'ok'"
-              to="/app"
+              :to="localePath('/app')"
               color="primary"
               size="lg"
               block
             >
               {{ t('auth.confirm.continueApp') }}
             </UButton>
-            <UButton to="/" variant="soft" color="neutral" size="lg" block>
+            <UButton :to="localePath('/')" variant="soft" color="neutral" size="lg" block>
               {{ t('auth.confirm.backHome') }}
             </UButton>
           </div>

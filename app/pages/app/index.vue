@@ -1,18 +1,24 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'app',
+  i18n: false,
 })
 
 const { t } = useT()
+const localePath = useLocalePath()
 const { formatMediumDate } = useLocaleFormatters()
 
+const displayTitle = useSeoDisplayTitle('seo.pageTitle.app')
+
 useSeoMeta({
-  title: () => `${t('seo.pageTitle.app')} — ${t('common.appName')}`,
-  ogTitle: () => `${t('seo.pageTitle.app')} — ${t('common.appName')}`,
+  title: () => t('seo.pageTitle.app'),
+  ogTitle: () => displayTitle.value,
   description: () => t('seo.pageDescription.app'),
   ogDescription: () => t('seo.pageDescription.app'),
   ogType: 'website',
   twitterCard: 'summary_large_image',
+  twitterTitle: () => displayTitle.value,
+  twitterDescription: () => t('seo.pageDescription.app'),
   ogSiteName: () => t('common.appName'),
 })
 
@@ -62,10 +68,10 @@ function usageProgress(used: number, limit: number | null) {
           </p>
         </div>
         <div class="flex shrink-0 flex-wrap gap-3">
-          <UButton to="/app/search" color="primary" size="lg" leading-icon="i-heroicons-magnifying-glass">
+          <UButton :to="localePath('/app/search')" color="primary" size="lg" leading-icon="i-heroicons-magnifying-glass">
             {{ t('app.nav.search') }}
           </UButton>
-          <UButton to="/app/alerts" color="neutral" variant="outline" size="lg" leading-icon="i-heroicons-bell">
+          <UButton :to="localePath('/app/alerts')" color="neutral" variant="outline" size="lg" leading-icon="i-heroicons-bell">
             {{ t('app.nav.alerts') }}
           </UButton>
         </div>
@@ -110,7 +116,7 @@ function usageProgress(used: number, limit: number | null) {
                 <FbaPlanBadge :plan="planForBadge" />
               </div>
             </div>
-            <UButton to="/pricing" color="neutral" variant="outline" size="sm" class="shrink-0">
+            <UButton :to="localePath('/pricing')" color="neutral" variant="outline" size="sm" class="shrink-0">
               {{ t('nav.pricing') }}
             </UButton>
           </div>
@@ -160,7 +166,11 @@ function usageProgress(used: number, limit: number | null) {
               :description="t('dashboard.alertsEmptyBody')"
             >
               <template #action>
-                <UButton to="/app/alerts?new=1" color="primary" size="sm">
+                <UButton
+                  :to="localePath({ path: '/app/alerts', query: { new: '1' } })"
+                  color="primary"
+                  size="sm"
+                >
                   {{ t('alerts.newAlert') }}
                 </UButton>
               </template>
@@ -169,7 +179,7 @@ function usageProgress(used: number, limit: number | null) {
               <li v-for="a in overview?.alertsPreview" :key="a.id">
                 <NuxtLink
                   class="fba-list-row fba-list-row--interactive flex min-w-0 flex-wrap items-center justify-between gap-3 px-4 py-3.5 text-left text-default no-underline hover:text-default focus-visible:outline-none"
-                  :to="{ path: '/app/alerts', query: { edit: a.id } }"
+                  :to="localePath({ path: '/app/alerts', query: { edit: a.id } })"
                 >
                   <div class="min-w-0">
                     <span class="font-mono text-sm font-semibold tabular-nums text-highlighted">
@@ -187,7 +197,7 @@ function usageProgress(used: number, limit: number | null) {
                 </NuxtLink>
               </li>
               <li class="pt-1">
-                <UButton to="/app/alerts" variant="link" color="primary" class="px-0 font-semibold">
+                <UButton :to="localePath('/app/alerts')" variant="link" color="primary" class="px-0 font-semibold">
                   {{ t('alerts.manageAll') }}
                 </UButton>
               </li>
@@ -206,10 +216,10 @@ function usageProgress(used: number, limit: number | null) {
               :description="t('dashboard.recentMatchesEmptyBody')"
             >
               <template #action>
-                <UButton to="/app/alerts" color="neutral" variant="outline" size="sm">
+                <UButton :to="localePath('/app/alerts')" color="neutral" variant="outline" size="sm">
                   {{ t('app.nav.alerts') }}
                 </UButton>
-                <UButton to="/app/search" color="primary" size="sm">
+                <UButton :to="localePath('/app/search')" color="primary" size="sm">
                   {{ t('app.nav.search') }}
                 </UButton>
               </template>

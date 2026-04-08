@@ -1,17 +1,16 @@
 export const nl = {
   common: {
     appName: 'AwardFlightAlert',
-    codename: 'Flying Blue–focused MVP',
     loading: 'Laden…',
   },
   seo: {
     siteTitle: 'AwardFlightAlert — Flying Blue award zoeken & alerts',
     defaultDescription:
-      'AwardFlightAlert helpt Europese reizigers Flying Blue awardvluchten te zoeken en e-mailalerts te krijgen wanneer je reis past bij je data, cabine en limieten — eenvoudiger dan alles-in-één tools. Geen boekingssite.',
+      'AwardFlightAlert helpt je Flying Blue-awardvluchten te zoeken vanaf Parijs, Amsterdam en Brussel, miles en toeslagen in één oogopslag te vergelijken, en e-mail te ontvangen wanneer opties veranderen. Onafhankelijke dienst—je rondt elke boeking af op Flying Blue.',
     pageTitle: {
-      home: 'Flying Blue awards, zoeken & alerts voor Europa',
-      browse: 'Zoek beschikbaarheid',
-      pricing: 'Plannen & prijzen',
+      home: 'Flying Blue award zoeken, miles & e-mailalerts',
+      browse: 'Award zoeken',
+      pricing: 'Flying Blue award alerts — plannen & prijzen',
       login: 'Inloggen',
       signup: 'Account aanmaken',
       confirm: 'Bevestig inloggen',
@@ -22,18 +21,19 @@ export const nl = {
     },
     pageDescription: {
       home:
-        'AwardFlightAlert: begeleid Flying Blue award zoeken en e-mailalerts vanaf Europese hubs. Zoeken met demodata; echte alerts en e-mail indien ingeschakeld.',
-      browse: 'Voorbeeld Flying Blue-achtige awardbeschikbaarheid (demodata).',
-      pricing: 'Gratis en Pro: zoeklimieten per dag, actieve alerts en e-mailmeldingen.',
-      login: 'Log in op je Flying Blue Assistant workspace.',
-      signup: 'Maak een gratis account om zoekopdrachten en alerts te bewaren.',
+        'Zoek Flying Blue-awards vanaf CDG, AMS en BRU. Vergelijk miles, belastingen en verbindingen op één plek, bewaar alerts voor je reizen en ontvang e-mail wanneer er relevante wijzigingen zijn.',
+      browse: 'Zoek Flying Blue awards vanaf AMS, BRU en CDG.',
+      pricing:
+        'Vergelijk Gratis en Pro voor Flying Blue award zoeken en e-mailalerts: dagelijkse zoeklimieten, hoe vaak we alerts controleren en facturatie—start zonder kaart.',
+      login: 'Log in bij AwardFlightAlert om te zoeken, alerts te beheren en je plan te zien.',
+      signup: 'Maak je AwardFlightAlert-account om zoekopdrachten, alerts en voorkeuren te bewaren.',
       confirm: 'Rond je inloggen af via de link in je e-mail.',
       app: 'Overzicht: plan, gebruik en actieve alerts.',
       appSearch:
-        'Zoek Flying Blue–achtige awards vanaf AMS, BRU en CDG. Resultaten zijn demodata tot een live bron gekoppeld is.',
+        'Zoek awardvluchten vanaf AMS, BRU en CDG. Vergelijk miles, toeslagen, stops en cabine en maak vanuit een resultaat een alert.',
       appAlerts:
-        'Alerts voor routes en data; we controleren op een schema en mailen bij nieuwe passende opties.',
-      appAccount: 'Profiel, plan en Stripe-facturatie (indien ingeschakeld).',
+        'Maak en beheer Flying Blue award alerts. We controleren volgens een schema en mailen wanneer er nieuwe opties zijn die aan je criteria voldoen.',
+      appAccount: 'Profiel, abonnement en facturatie op één plek.',
     },
   },
   locale: {
@@ -57,9 +57,10 @@ export const nl = {
     dashboard: 'Dashboard',
     browse: 'Zoeken',
     pricing: 'Prijzen',
+    faq: 'FAQ',
     login: 'Inloggen',
     signup: 'Registreren',
-    search: 'Zoeken',
+    search: 'Award zoeken',
   },
   app: {
     nav: {
@@ -67,7 +68,7 @@ export const nl = {
       search: 'Award zoeken',
       alerts: 'Alerts',
       account: 'Account',
-      backToSite: 'Marketing site',
+      backToSite: 'Website',
     },
   },
   usage: {
@@ -83,9 +84,8 @@ export const nl = {
   },
   footer: {
     tagline:
-      'Flying Blue-first award zoeken en e-mailalerts voor reizigers in Europa — geen boekingssite.',
+      'Flying Blue award zoeken en e-mailalerts voor reizigers in Europa. We verkopen geen tickets—je rondt elke boeking af bij de maatschappij.',
     copyright: '© {year} {appName}. Alle rechten voorbehouden.',
-    codenameNote: 'Build: {codename}',
     colProduct: 'Product',
     colLegal: 'Vertrouwen',
     legalShort:
@@ -94,36 +94,36 @@ export const nl = {
   home: {
     kicker: 'AwardFlightAlert',
     heroTopic: 'Flying Blue · Europa',
-    heroTitleTop: 'Zoek en alert op',
-    heroTitleAccent: 'Flying Blue awards',
-    heroTitleBottom: 'met een rustiger, begeleid parcours.',
-    title: 'Zoek awards. Bewaar je criteria. Krijg mail zodra het past.',
+    heroTitleTop: 'Flying Blue-awards,',
+    heroTitleAccent: 'helder gezocht',
+    heroTitleBottom:
+      'Vanaf Parijs, Amsterdam of Brussel—vergelijk opties en krijg mail wanneer je alert een wijziging signaleert.',
+    title: 'Zoek awards. Bewaar alerts. Bevestig en boek op Flying Blue.',
     subtitle:
-      'Voor Europese reizigers met miles: eerst hubs als AMS, BRU en CDG, duidelijke miles en toeslagen, en alerts op jouw data en cabine — zonder de ruis van “elk programma, elke route”.',
+      'Voor reizigers die Flying Blue-miles sparen en inwisselen: een gericht zoekformulier, vergelijkbare resultaten en alerts voor jouw data en cabine—zonder meerdere programma’s tegelijk te hoeven bijhouden.',
     heroTrust:
-      'Geen reisbureau of boekingssite. Zoeken gebruikt demodata terwijl we het product harden; alerts, opgeslagen criteria en e-mail zijn echt wanneer ingeschakeld.',
-    trustTitle: 'Vertrouwen, scope en eerlijkheid — meteen duidelijk',
-    trustSubtitle: 'Een premium tool zegt wat ze wel en niet doet.',
-    trust1Title: 'Geen boekingssite',
+      'Onafhankelijk—niet de maatschappij en geen reisbureau. Je verkent en volgt hier awardbeschikbaarheid; elk ticket loopt via Flying Blue of je eigen reisadviseur.',
+    trustTitle: 'Wat je van ons kunt verwachten',
+    trustSubtitle: 'Waar we helpen, waar we stoppen, en hoe dat past bij een echte awardboeking.',
+    trust1Title: 'Jij boekt bij de maatschappij',
     trust1Body:
-      'We helpen award-achtige opties vinden en volgen. Boeken blijft tussen jou en de maatschappij of je agent.',
-    trust2Title: 'Europa eerst',
+      'We tonen en volgen award-achtige opties. Ticketing gebeurt altijd via Flying Blue of een adviseur die jij kiest—nooit via AwardFlightAlert.',
+    trust2Title: 'Europese vertrekpunten voorop',
     trust2Body:
-      'Defaults en teksten gaan uit van EU-vertrekpunten — geen US-first points-workflow.',
-    trust3Title: 'Transparant over data',
+      'Teksten, standaardwaarden en hubs sluiten aan op hoe leden in Frankrijk en de Benelux zoeken—geen one-size-fits-all wereldtool.',
+    trust3Title: 'Controleer vóór je betaalt',
     trust3Body:
-      'Zoekresultaten zijn nu realistische demo. Je alerts, e-mail en opgeslagen reizen zijn echte features wanneer ingeschakeld.',
-    trust4Title: 'Smal met reden',
+      'Awardstoelen en tarieven verschuiven snel. Gebruik AwardFlightAlert om te vergelijken, bevestig daarna beschikbaarheid, belastingen en de uiteindelijke prijs op airfranceklm.com of in de Flying Blue-app.',
+    trust4Title: 'Eén programma, minder hendels',
     trust4Body:
-      'Flying Blue–first, minder knoppen dan megaportals — beginners en liefhebbers gaan sneller vooruit.',
-    mock: {
+      'Alleen Flying Blue betekent minder instellingen en duidelijkere resultaten—je besteedt tijd aan een vlucht kiezen, niet aan twaalf programma’s tunen.',
+    preview: {
       searchAria: 'Illustratie van het award zoekscherm met voorbeeldroute en resultaten',
       alertsAria: 'Illustratie van de alertlijst met statuslabels',
       urlSearch: 'app…/search',
       urlAlerts: 'app…/alerts',
       panelSearch: 'Award zoeken',
       panelAlerts: 'Actieve alerts',
-      badgeDemo: 'Demodata',
       from: 'Van',
       to: 'Naar',
       dateOut: '12 jun · Heen',
@@ -137,17 +137,18 @@ export const nl = {
       row2Route: 'CDG → SFO',
       row2Sub: 'Business · direct',
       row2Miles: '88.000 mi',
-      alertsSub: '2 watches',
+      alertsSub: '2 alerts',
       alert1Route: 'CDG → YUL',
       alert1Dates: 'Jul · Business',
       alert2Route: 'AMS → BCN',
       alert2Dates: '±3 dagen · Economy',
       statusOn: 'Actief',
       statusPaused: 'Gepauzeerd',
-      alertFoot: 'E-mail wanneer de set passende opties verandert — interval hangt van je plan af.',
+      alertFoot: 'E-mail wanneer de relevante matches voor je alert veranderen—hoe vaak we controleren hangt van je plan af.',
     },
     pricingTeaserTitle: 'Eenvoudige plannen',
-    pricingTeaserSubtitle: 'Start gratis. Upgrade als alerts deel van je routine worden.',
+    pricingTeaserSubtitle:
+      'Begin op Gratis zonder kaartgegevens. Upgrade naar Pro als je meer dagelijkse zoekopdrachten, meer gelijktijdige alerts en snellere achtergrondcontroles wilt.',
     pricingTeaserFreeName: 'Gratis',
     pricingTeaserFreePrice: '€0',
     pricingTeaserFreeMeta: 'Geen kaart nodig',
@@ -158,43 +159,43 @@ export const nl = {
     pricingTeaserProMeta: 'per maand · opzeggen wanneer je wilt',
     pricingTeaserProB1: '50 award zoekopdrachten per UTC-dag',
     pricingTeaserProB2: 'Tot 10 alerts · snellere checks',
-    pricingTeaserCta: 'Vergelijk alle features',
-    ctaPrimaryTitle: 'Klaar voor een begeleide zoekopdracht?',
+    pricingTeaserCta: 'Volledige vergelijking',
+    ctaPrimaryTitle: 'Probeer de zoekopdracht in een minuut',
     ctaPrimaryBody:
-      'Geen kaart op Gratis. Maak een account om alerts te bewaren en verder te gaan waar je bleef.',
+      'Gratis vraagt nooit om een kaart. Maak een account om alerts te bewaren en op elk apparaat verder te gaan.',
     ctaBrowse: 'Award zoeken openen',
-    ctaPricing: 'Vergelijk plannen',
+    ctaPricing: 'Bekijk plannen',
     howTitle: 'Hoe het werkt',
-    howSubtitle: 'Drie stappen van idee tot inbox.',
-    howStep1Title: 'Zoeken met richting',
+    howSubtitle: 'Drie stappen van route tot inbox.',
+    howStep1Title: 'Zoeken met een kort formulier',
     howStep1Body:
-      'Kies vertrek, bestemming, data, cabine en optionele maxima voor miles of toeslagen. Het formulier blijft kort.',
+      'Vertrek, bestemming, data, cabine en optionele maxima voor miles of toeslagen—genoeg structuur om te vergelijken, niets overbodigs.',
     howStep2Title: 'Sla een alert op',
     howStep2Body:
-      'Maak van een reis een watchlist. We volgen wat jij belangrijk vindt — niet elke route ter wereld.',
-    howStep3Title: 'E-mail bij verandering',
+      'We houden de reis die jij hebt omschreven in de gaten—routes, vensters en cabine—niet het hele netwerk.',
+    howStep3Title: 'E-mail als het schuift',
     howStep3Body:
-      'Bij nieuwe opties die bij je alert passen, krijg je bericht. Gratis ongeveer elk uur; Pro vaker.',
-    propsTitle: 'Waarom dit i.p.v. één groot award-portaal?',
-    propsSubtitle: 'Minder ruis, duidelijke limieten, Flying Blue centraal.',
-    prop1Title: 'Flying Blue voorop',
+      'Veranderen de vluchten die bij je alert horen op een zinvolle manier, dan mailen we je. Op Gratis gemiddeld ongeveer elk uur; op Pro ongeveer elke vijftien minuten.',
+    propsTitle: 'Waarom alleen Flying Blue helpt',
+    propsSubtitle: 'Eén programma, één pad—minder ruis, sneller beslissen.',
+    prop1Title: 'Voor Flying Blue-leden gebouwd',
     prop1Body:
-      'Teksten en defaults gaan uit van Flying Blue en Europese vertrekhubs — geen generieke “alle programma’s”-doolhof.',
-    prop2Title: 'Eerlijk over data',
+      'Geen multi-programma-dashboards. Standaardwaarden en hubs sluiten aan op hoe mensen in Frankrijk en de Benelux daadwerkelijk inwisselen.',
+    prop2Title: 'Miles, toeslagen en routing samen',
     prop2Body:
-      'Resultaten zijn nu demo om het product te testen. Alerts, e-mail en je opgeslagen criteria zijn echt.',
-    prop3Title: 'Alerts die je reis volgen',
+      'De getallen die een awardkeuze sturen staan naast elkaar, zodat je hier een shortlist maakt en op Flying Blue met vertrouwen afrondt.',
+    prop3Title: 'Alerts die bij je reis passen',
     prop3Body:
-      'Jij zet datums, cabine, passagiers en optionele maxima. We mailen alleen als de set passende vluchten verandert.',
-    prop4Title: 'Voor EU-reizigers',
+      'Jij stelt flexibiliteit in data, cabine, gezelschap en optionele limieten in. We melden ons als de relevante set vluchten verandert—niet bij elke kleine dienstregelingwijziging.',
+    prop4Title: 'CDG, AMS en BRU centraal',
     prop4Body:
-      'Copy en UX richten zich op wie routeert via Parijs, Amsterdam of Brussel — geen US-first points-blogworkflow.',
-    casesTitle: 'Voorbeelden',
-    casesSubtitle: 'Concrete situaties voor een gerichte Flying Blue-tool.',
+      'Vertrek via Parijs, Amsterdam of Brussel hoort bij de kern van het product—geen bijzaak van een VS-gereedschap.',
+    casesTitle: 'Reizen die mensen volgen',
+    casesSubtitle: 'Voorbeelden die passen bij een Flying Blue-eerste zoek- en alertflow.',
     case1Badge: 'Intercontinentaal',
     case1Title: 'Parijs–New York in Business',
     case1Body:
-      'Volg een tweewekens heenvenster in de zomer, cap op miles en toeslagen, pauzeer de alert na boeking.',
+      'Volg een tweewekens heenvenster in de zomer, cap op miles en toeslagen, zet de alert op pauze zodra je een ticket hebt.',
     case2Badge: 'Europa',
     case2Title: 'Weekendjes in Economy',
     case2Body:
@@ -203,46 +204,49 @@ export const nl = {
     case3Title: 'Gezinsreis, vier personen',
     case3Body:
       'Passagiersaantal een keer instellen; alerts en zoeken blijven gelijk, geen vergelijk met solo-prijzen.',
-    screenshotsTitle: 'Wat je echt gebruikt',
+    screenshotsTitle: 'Zoeken en alerts samen',
     screenshotsSubtitle:
-      'Een gestructureerde preview van zoeken en alerts — echte screenshots vervangen deze mocks als de UI vastligt.',
+      'Vergelijk tijdens het plannen, laat alerts daarna het werk doen—zonder spreadsheet- of tabstress.',
     screenshotSearchTitle: 'Award zoeken',
-    screenshotSearchHint: 'Route, data, cabine en een tabel met miles, toeslagen en stops.',
+    screenshotSearchHint: 'Route, data, cabine en sorteerbare miles, toeslagen en verbindingen.',
     screenshotAlertsTitle: 'Alerts',
-    screenshotAlertsHint: 'Lijst met actieve watches; matchgeschiedenis volgt met rijkere feeds.',
+    screenshotAlertsHint: 'Actieve alerts met duidelijke status—je ziet altijd wat we in de gaten houden.',
     faqTitle: 'Veelgestelde vragen',
     faq1q: 'Is dit een officiële Air France–KLM- of Flying Blue-app?',
     faq1a:
-      'Nee. AwardFlightAlert is onafhankelijk. Controleer altijd beschikbaarheid en prijs in het officiële Flying Blue-kanaal voor je boekt.',
-    faq2q: 'Zijn zoekresultaten live?',
+      'Nee. AwardFlightAlert is onafhankelijk. Bevestig vóór betaling of ticketing altijd beschikbaarheid, belastingen en de uiteindelijke prijs in het officiële Flying Blue-kanaal.',
+    faq2q: 'Hoe vers is de awardbeschikbaarheid die ik zie?',
     faq2a:
-      'Nog niet. Je ziet realistische demodata om flows te testen. Een live bron staat op de roadmap.',
-    faq3q: 'Wat zit er in Gratis?',
+      'Awardstoelen wijzigen vaak. Gebruik AwardFlightAlert om routes en kosten te vergelijken en alerts als vervolg—en controleer wat je wilt boeken op flyingblue.com of in de Flying Blue-app.',
+    faq3q: 'Wat zit er in het Gratis-plan?',
     faq3a:
-      'Een beperkt aantal zoekopdrachten per UTC-dag, één actieve alert en de volledige begeleide flow. Zie de prijspagina voor exacte aantallen.',
-    faq4q: 'Verschil Gratis en Pro bij alerts?',
+      'Een dagelijkse zoeklimiet (UTC-kalenderdag), één actieve alert en dezelfde zoek- en alert-ervaring als Pro. Zie de prijspagina voor exacte limieten en de vergelijking met Pro.',
+    faq4q: 'Hoe verschillen Gratis en Pro voor alerts?',
     faq4a:
-      'Pro controleert vaker (ongeveer elke 15 minuten vs 60 op Gratis). Dezelfde matchregels en e-mail op beide plannen.',
+      'Achtergrondcontroles lopen gemiddeld ongeveer elke vijftien minuten op Pro en ongeveer elk uur op Gratis. Verder zijn de matchregels en e-mail hetzelfde.',
     faq5q: 'Verkopen jullie tickets?',
     faq5a:
-      'Nee. We helpen award-achtige opties ontdekken en volgen; boeken blijft tussen jou en de maatschappij of je agent.',
+      'Nee. We helpen bij het onderzoeken en volgen van award-achtige opties. Uitgifte blijft altijd bij de maatschappij of een adviseur die jij aanwijst.',
     faq6q: 'Welke talen?',
-    faq6a: 'Engels, Nederlands en Frans op marketing en app-shell.',
-    ctaMidTitle: 'Zoeken uitproberen?',
-    ctaMidBody: 'Geen kaart voor Gratis. Account om alerts te bewaren.',
-    ctaMidPrimary: 'Start met zoeken',
+    faq6a: 'Engels, Nederlands en Frans op de marketingwebsite en in het ingelogde product.',
+    faq7q: 'Van welke luchthavens kan ik vertrekken?',
+    faq7a:
+      'Zoeken start vanaf Parijs Charles de Gaulle (CDG), Amsterdam Schiphol (AMS) en Brussels Airport (BRU). Die focus sluit aan bij hoe veel Flying Blue-leden in Frankrijk en de Benelux hun reizen plannen.',
+    ctaMidTitle: 'Doe een zoekopdracht',
+    ctaMidBody: 'Gratis vraagt geen kaart. Maak een account om alerts te bewaren en op elk apparaat te gebruiken.',
+    ctaMidPrimary: 'Zoeken openen',
     ctaMidSecondary: 'Bekijk prijzen',
-    ctaBottomTitle: 'Vragen over facturatie of limieten?',
-    ctaBottomBody: 'Plannen, quota en upgrade staan op de prijspagina.',
-    ctaBottomPrimary: 'Plannen & FAQ',
+    ctaBottomTitle: 'Plannen, limieten en facturatie',
+    ctaBottomBody: 'Vergelijk Gratis en Pro op één plek—quota, alertfrequentie en antwoorden op betalingsvragen.',
+    ctaBottomPrimary: 'Prijzen & FAQ',
   },
   browse: {
     headline: 'Award zoeken',
     intro:
-      'Binnenkort kun je enkele reis en retour Flying Blue awards zoeken vanaf AMS, BRU en CDG in een eenvoudige, begeleide flow.',
-    demoTitle: 'Voorbeeldresultaten (demo)',
+      'Zoek enkele reis en retour Flying Blue awards vanaf AMS, BRU en CDG met filters die overzichtelijk blijven.',
+    demoTitle: 'Voorbeeldresultaten',
     demoNote:
-      'Illustratieve Flying Blue-achtige awards voor layout en copy — geen live beschikbaarheid en niet boekbaar.',
+      'Illustratieve Flying Blue-achtige awards ter vergelijking — bevestig altijd op Flying Blue vóór je boekt.',
     cabin: {
       economy: 'Economy',
       premium: 'Premium Economy',
@@ -261,15 +265,16 @@ export const nl = {
     colSeats: 'Beschikbaarheid',
   },
   pricing: {
-    kicker: 'Eenvoudige plannen',
+    kicker: 'Plannen',
     headline: 'Prijzen',
-    title: 'Gratis ontdekken. Pro als je alerts intensief gebruikt.',
+    title: 'Start gratis. Stap over naar Pro als je meer zoekopdrachten en snellere alert-checks wilt.',
     intro:
-      'Limieten zijn bewust: voorspelbare kosten en minder “scraping”. Onderstaande aantallen gelden vandaag (UTC-dag voor zoeken).',
-    pickPlanTitle: 'Plannen',
-    pickPlanDesc: 'Zelfde product — Pro verhoogt zoeklimieten, actieve alerts en checkfrequentie.',
-    compareTitle: 'Volledige vergelijking',
-    compareSubtitle: 'Exacte limieten vandaag (UTC-dag voor zoeken).',
+      'Dagelijkse limieten houden de dienst voor iedereen responsief. De zoekteller reset om middernacht UTC. Gratis en Pro bieden dezelfde ervaring—Pro verhoogt hoeveel je per dag kunt doen en hoe vaak we alerts opnieuw controleren.',
+    pickPlanTitle: 'Kies een plan',
+    pickPlanDesc:
+      'Dezelfde zoek- en alert-ervaring op beide niveaus. Pro geeft meer ruimte: meer zoekopdrachten per dag, meer actieve alerts tegelijk en kortere tussenpozen tussen achtergrondcontroles.',
+    compareTitle: 'Snel vergelijken',
+    compareSubtitle: 'Limieten die nu gelden (zoekteller: UTC-kalenderdag).',
     compareColFeature: 'Functie',
     compareColFree: 'Gratis',
     compareColPro: 'Pro',
@@ -282,36 +287,37 @@ export const nl = {
     compareCadence: 'Typische alert-frequentie',
     compareCadenceFree: 'Ongeveer elke 60 minuten',
     compareCadencePro: 'Ongeveer elke 15 minuten',
-    compareEmail: 'E-mail bij gewijzigde matches',
+    compareEmail: 'E-mail bij gewijzigde alertresultaten',
     compareEmailBoth: 'Ja (als e-mail aan staat)',
     compareFootnote:
-      'Frequentie hangt van plan af; per-alert overrides kunnen later. Demozoekdata tot een live provider.',
-    faqTitle: 'FAQ facturatie',
-    faqSubtitle: 'Kaarten, checkout en opzeggen — kort uitgelegd.',
-    billingPoint1: 'Geen kaart bij Gratis',
-    billingPoint2: 'Pro-checkout via Stripe',
-    billingPoint3: 'Opzeggen altijd via Account',
-    proCtaNote: 'Beveiligd door Stripe · Maandelijks · Opzeggen wanneer je wilt',
+      'Typische checkintervallen hangen van je plan af. Bevestig awardbeschikbaarheid, belastingen en de uiteindelijke prijs op Flying Blue vóór je een boeking afrondt.',
+    faqTitle: 'Vragen over facturatie',
+    faqSubtitle: 'Betaling, kaarten en opzeggen—kort uitgelegd.',
+    billingPoint1: 'Gratis: geen kaart nodig',
+    billingPoint2: 'Pro: veilige checkout met Stripe',
+    billingPoint3: 'Opzeggen kan altijd via Account',
+    proCtaNote: 'Stripe · Maandelijks · Opzeggen wanneer je wilt',
     pFaq1q: 'Kan ik Pro opzeggen wanneer ik wil?',
     pFaq1a:
       'Ja. Beheer of annuleer via het facturatieportaal op Account. Je houdt Pro tot het einde van de betaalde periode.',
     pFaq2q: 'Bewaren jullie mijn kaart op Gratis?',
     pFaq2a: 'Nee. Gratis vraagt geen kaart. Checkout alleen als je Pro kiest.',
     pFaq3q: 'In welke valuta is Pro?',
-    pFaq3a: 'Stripe regelt checkout; getoonde prijs is in euro voor deze MVP.',
+    pFaq3a:
+      'Stripe verwerkt de betaling. Prijzen worden in euro getoond en afgerekend, tenzij Stripe bij checkout een gelokaliseerde optie aanbiedt.',
     ctaSectionTitle: 'Heldere facturatie',
     ctaSectionBody:
-      'Gratis vraagt nooit om een kaart. Kies je Pro, dan loopt checkout via Stripe en je limieten worden direct bijgewerkt.',
+      'Gratis vraagt nooit om betaalgegevens. Kies je Pro, dan loopt checkout veilig via Stripe en je limieten worden bijgewerkt zodra de betaling slaagt.',
     plans: {
       free: {
         name: 'Gratis',
         price: '€0',
         period: 'Geen kaart nodig',
         features: [
-          '3 award-zoekopdrachten per UTC-dag',
+          '3 award-zoekopdrachten per UTC-kalenderdag',
           '1 actieve alert',
-          'Volledige begeleide zoekopdracht (demodata)',
-          'E-mail bij matches (indien ingeschakeld)',
+          'Volledige zoekopdracht vanaf CDG, AMS en BRU',
+          'E-mail wanneer de matches van je alert veranderen (optioneel)',
         ],
       },
       pro: {
@@ -319,18 +325,24 @@ export const nl = {
         price: '€9',
         period: 'per maand · opzeggen kan altijd',
         features: [
-          '50 award-zoekopdrachten per UTC-dag',
+          '50 award-zoekopdrachten per UTC-kalenderdag',
           'Tot 10 actieve alerts',
-          'Snellere alert-checks (~15 min)',
-          'Zelfde e-mailregels als Gratis indien ingeschakeld',
+          'Achtergrondcontroles ongeveer elke 15 minuten',
+          'Zelfde e-mailopties als Gratis',
         ],
       },
     },
-    ctaComingSoon: 'Afrekenen niet beschikbaar',
     ctaUpgrade: 'Upgrade naar Pro',
     ctaUpgradeLogin: 'Log in om te upgraden',
     ctaCurrentFree: 'Je zit op Gratis.',
     freePlanUpgradeHint: 'Upgrade via de Pro-kaart →',
+    freePlanUpgradeHintBillingOff: 'Je kunt naar Pro via je Account-pagina wanneer je dat wilt.',
+    ctaProStart: 'Account aanmaken',
+    ctaOpenAccount: 'Account openen',
+    ctaProBillingOffNoteGuest:
+      'Maak een account om op Gratis te zoeken. Abonneer je op Pro via Account als je meer capaciteit wilt.',
+    ctaProBillingOffNoteSignedIn:
+      'Abonneer je op Pro via je Account-pagina als je meer capaciteit wilt.',
     ctaGetStartedFree: 'Gratis account maken',
     ctaAlreadyPro: 'Je hebt Pro',
     checkoutError: 'Afrekenen starten lukt niet. Probeer opnieuw.',
@@ -379,8 +391,9 @@ export const nl = {
       userAlreadyRegistered: 'Deze e-mail is al geregistreerd. Log in.',
       passwordTooShort: 'Wachtwoord voldoet niet aan de eisen.',
       rateLimited: 'Te veel pogingen. Wacht even en probeer opnieuw.',
-      notConfigured: 'Supabase is niet geconfigureerd. Zet SUPABASE_URL en SUPABASE_KEY in je omgeving.',
-      unavailable: 'Authenticatie is niet beschikbaar in deze build.',
+      notConfigured:
+        'Inloggen kan de authenticatiedienst niet bereiken. Blijft dit zo? Neem contact op met de beheerder.',
+      unavailable: 'Inloggen is tijdelijk niet beschikbaar',
       confirmFailed: 'Inloggen via deze link is niet gelukt.',
     },
     validation: {
@@ -414,9 +427,9 @@ export const nl = {
   search: {
     placeholderTitle: 'Award zoeken',
     placeholderBody:
-      'Probeer routes vanaf AMS, BRU of CDG met realistische demo-awards. Geen live voorraad — leer de flow en vul alerts vooraf.',
+      'Start vanaf AMS, BRU of CDG, vergelijk miles en toeslagen en maak van een interessante optie een alert. Bevestig elke boeking op Flying Blue.',
     sampleRouteLabel: 'Voorbeeld stedenpaar',
-    devReferenceTitle: 'UI-primitieven (referentie)',
+    devReferenceTitle: 'UI-referentie',
     sectionFormTitle: 'Zoeken',
     sectionFormDesc:
       'Start met hub en bestemming, verfijn data en cabine. Optionele maxima voor miles en toeslagen houden resultaten relevant.',
@@ -426,7 +439,7 @@ export const nl = {
     formGroupFlex: 'Datumflexibiliteit',
     formGroupAdvanced: 'Optionele limieten',
     formActionsHint:
-      'We zoeken in demo-awarddata om het product te testen — geen live voorraad.',
+      'Resultaten ondersteunen je vergelijking — bevestig definitieve beschikbaarheid op Flying Blue vóór je boekt.',
     sectionResultsTitle: 'Resultaten',
     sectionResultsDesc: 'Vergelijk miles, toeslagen en stops. Maak een alert vanaf een rij.',
     tripType: 'Reistype',
@@ -466,7 +479,7 @@ export const nl = {
     createAlertHint: 'Opent de alerteditor met route en data al ingevuld.',
     noResultsTitle: 'Geen resultaten',
     noResultsBody:
-      'Verbreed ± dagen, probeer een andere cabine of zet alleen-direct uit. Demodata varieert — een nieuwe zoekopdracht kan opties tonen.',
+      'Verbreed de datumflex, probeer een andere cabine of zet alleen-direct uit. Aanpassen van filters levert vaak extra opties op.',
     loadError: 'Zoeken mislukt. Probeer opnieuw.',
     limitReached: 'Dagelijkse zoeklimiet bereikt.',
     cacheHint: 'Uit cache',
@@ -510,7 +523,7 @@ export const nl = {
   alerts: {
     pageTitle: 'Alerts',
     pageDesc:
-      'Beheer Flying Blue award alerts. Achtergrondcontroles draaien op een schema; je krijgt e-mail bij nieuwe opties die passen.',
+      'Beheer Flying Blue award alerts. Achtergrondcontroles draaien volgens een schema; je ontvangt e-mail wanneer er nieuwe opties zijn die aan je criteria voldoen.',
     editorDesc: 'Stel route, data en voorkeuren voor deze alert in.',
     cardDatesLabel: 'Reisdata',
     newAlert: 'Nieuwe alert',
@@ -553,7 +566,7 @@ export const nl = {
     unlimited: '—',
     recentMatchesTitle: 'Recente matches',
     recentMatchesPlaceholder:
-      'Als een alert-run nieuwe opties vindt, verschijnen ze hier. Zet e-mail aan om ook een melding te krijgen.',
+      'Vindt een controle nieuwe opties voor een alert, dan verschijnen ze hier. Schakel e-mailmeldingen in voor dezelfde update in je inbox.',
     manageAll: 'Alle alerts beheren',
     previewTitle: 'Actieve alerts',
   },
@@ -566,17 +579,17 @@ export const nl = {
     activityShellTitle: 'Activiteit',
     welcomeTitle: 'Welkom terug',
     welcomeBody:
-      'Zoek demo-awards, stel alerts af en volg je dagelijkse quota — alles vanaf dit dashboard.',
+      'Voer awardzoekopdrachten uit, stel alerts bij en volg je gebruik vandaag — vanaf dit overzicht.',
     metricsSampleLabel: 'Voorbeeldmetric',
     metricsSampleValue: '—',
     alertsEmptyTitle: 'Nog geen alerts',
     alertsEmptyBody:
-      'Vanuit zoekresultaten: Alert maken op een rij, of handmatig een watch op de Alerts-pagina.',
+      'Vanuit zoekresultaten: Alert maken op een rij, of handmatig een alert op de Alerts-pagina.',
     recentMatchesEmptyTitle: 'Nog geen matches',
     recentMatchesEmptyBody:
       'Als achtergrondchecks nieuwe opties vinden, verschijnt hier een korte geschiedenis.',
     accountEmptyTitle: 'Account',
-    accountEmptyBody: 'Profiel, plan en notificaties verschijnen hier later.',
+    accountEmptyBody: 'Profiel, plan en notificaties beheer je op deze pagina.',
     accountSignedInAs: 'Ingelogd als',
     accountSignOut: 'Uitloggen',
     accountWorkspaceHint: 'Sessie wordt beheerd door Supabase. Log uit op gedeelde apparaten.',
@@ -607,6 +620,6 @@ export const nl = {
       'Je abonnement kon nog niet worden gesynchroniseerd. Blijft je plan fout? Open Facturatie beheren of probeer het zo opnieuw.',
   },
   placeholders: {
-    comingSoon: 'Binnenkort.',
+    comingSoon: '—',
   },
 } as const

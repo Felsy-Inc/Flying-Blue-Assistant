@@ -1,12 +1,11 @@
 import { computed } from 'vue'
-import { createTranslator } from '~lib/i18n'
+import type { Locale } from '~lib/i18n/locales'
 
 export const useT = () => {
-  const { locale } = useAppLocale()
-  const translator = computed(() => createTranslator(locale.value))
+  const i18n = useI18n()
 
   return {
-    locale,
-    t: (key: string, vars?: Record<string, string | number>) => translator.value(key, vars),
+    t: (key: string, vars?: Record<string, string | number>) => i18n.t(key, (vars ?? {}) as Record<string, unknown>),
+    locale: computed(() => i18n.locale.value as Locale),
   }
 }

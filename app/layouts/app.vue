@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 
 const route = useRoute()
 const { t } = useT()
+const localePath = useLocalePath()
 const { nuxtUiLocale } = useAppShellHead()
 const { configured, signOut } = useAuth()
 
@@ -23,29 +24,35 @@ const sidebarItems = computed(() => [
     {
       label: t('app.nav.dashboard'),
       icon: 'i-heroicons-squares-2x2',
-      to: '/app',
+      to: localePath('/app'),
     },
     {
       label: t('app.nav.search'),
       icon: 'i-heroicons-magnifying-glass',
-      to: '/app/search',
+      to: localePath('/app/search'),
     },
     {
       label: t('app.nav.alerts'),
       icon: 'i-heroicons-bell',
-      to: '/app/alerts',
+      to: localePath('/app/alerts'),
     },
     {
       label: t('app.nav.account'),
       icon: 'i-heroicons-user',
-      to: '/app/account',
+      to: localePath('/app/account'),
     },
   ],
 ])
 
+const appPathSansLocalePrefix = computed(() => {
+  const p = route.path.replace(/\/+$/, '') || '/'
+  const stripped = p.replace(/^\/(nl|fr)(?=\/|$)/, '')
+  return stripped.startsWith('/') ? stripped : `/${stripped}`
+})
+
 const pageTitle = computed(() => {
-  const p = route.path
-  if (p === '/app' || p === '/app/') return t('dashboard.titleHome')
+  const p = appPathSansLocalePrefix.value
+  if (p === '/app') return t('dashboard.titleHome')
   if (p.startsWith('/app/search')) return t('dashboard.titleSearch')
   if (p.startsWith('/app/alerts')) return t('dashboard.titleAlerts')
   if (p.startsWith('/app/account')) return t('dashboard.titleAccount')
@@ -54,7 +61,7 @@ const pageTitle = computed(() => {
 </script>
 
 <template>
-  <UApp :locale="nuxtUiLocale">
+  <UApp :locale="nuxtUiLocale as any">
     <UDashboardGroup storage-key="fba-dash" class="min-h-screen">
       <UDashboardSidebar>
         <template #header="{ collapsed }">
@@ -62,7 +69,7 @@ const pageTitle = computed(() => {
             <span class="fba-mark size-8 shrink-0 rounded-full" />
             <NuxtLink
               v-if="!collapsed"
-              to="/app"
+              :to="localePath('/app')"
               class="fba-inline-link truncate font-semibold tracking-tight text-highlighted hover:text-highlighted"
             >
               {{ t('common.appName') }}
@@ -96,7 +103,7 @@ const pageTitle = computed(() => {
               <span v-if="!collapsed">{{ t('dashboard.accountSignOut') }}</span>
             </UButton>
             <UButton
-              to="/"
+              :to="localePath('/')"
               variant="ghost"
               color="neutral"
               size="xs"

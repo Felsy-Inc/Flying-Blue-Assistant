@@ -1,5 +1,8 @@
 <script setup lang="ts">
-await navigateTo('/login', { replace: true })
+definePageMeta({ i18n: false })
+
+const localePath = useLocalePath()
+await navigateTo(localePath('/login'), { replace: true })
 </script>
 
 <template>

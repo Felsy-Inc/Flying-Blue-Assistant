@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
-import type { Json } from '~~/types/database.types'
-import type { Database } from '~~/types/database.types'
+import type { Database, Json } from '~~/types/database.types'
+
+type AvailabilityCacheRow = Database['public']['Tables']['availability_cache_entries']['Row']
 
 /**
  * Availability / search-result cache. Requires **service role** client (`serverSupabaseServiceRole`).
@@ -10,7 +11,7 @@ export async function getAvailabilityCacheByFingerprint(
   client: SupabaseClient<Database>,
   loyaltyProgramSlug: string,
   fingerprint: string,
-) {
+): Promise<AvailabilityCacheRow | null> {
   const { data, error } = await client
     .from('availability_cache_entries')
     .select('*')
@@ -20,8 +21,9 @@ export async function getAvailabilityCacheByFingerprint(
 
   if (error) throw error
   if (!data) return null
-  if (new Date(data.expires_at) <= new Date()) return null
-  return data
+  const row = data as AvailabilityCacheRow
+  if (new Date(row.expires_at) <= new Date()) return null
+  return row
 }
 
 export async function upsertAvailabilityCacheEntry(

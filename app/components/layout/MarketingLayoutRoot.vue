@@ -4,13 +4,16 @@ import MarketingFooter from '~/components/layout/MarketingFooter.vue'
 import MarketingHeader from '~/components/layout/MarketingHeader.vue'
 
 const route = useRoute()
-const isHome = computed(() => route.path === '/')
+const isHome = computed(() => {
+  const normalized = route.path.replace(/\/+$/, '') || '/'
+  return normalized === '/' || normalized === '/nl' || normalized === '/fr'
+})
 
 const { nuxtUiLocale } = useAppShellHead()
 </script>
 
 <template>
-  <UApp :locale="nuxtUiLocale">
+  <UApp :locale="nuxtUiLocale as any">
     <div class="fba-marketing-shell min-h-screen flex flex-col bg-default text-default">
       <MarketingHeader />
       <UMain class="flex-1">
