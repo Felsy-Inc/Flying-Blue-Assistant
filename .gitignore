@@ -1,0 +1,17 @@
+# Nuxt / Node
+.nuxt
+.output
+node_modules
+.cache
+.pnpm-store
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS
+.DS_Store
