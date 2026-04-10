@@ -1,7 +1,8 @@
 import type { AuthError, SupabaseClient } from '@supabase/supabase-js'
 import { computed } from 'vue'
+import { syncSupabaseUserLocale } from '~lib/auth/sync-user-locale'
 import { authErrorToKey } from '~lib/auth/map-auth-error'
-import { normalizeLocale } from '~lib/i18n'
+import { normalizeLocale, type Locale } from '~lib/i18n'
 import { withLocaleInternalPath } from '~lib/i18n/with-locale-internal-path'
 import type { Database } from '~~/types/database.types'
 
@@ -15,8 +16,10 @@ export const useAuth = () => {
   const localePath = useLocalePath()
   const { locale } = useI18n()
 
+  const authLocale = (): Locale => normalizeLocale(String(locale.value)) ?? 'en'
+
   const emailConfirmRedirectUrl = () => {
-    const loc = normalizeLocale(String(locale.value)) ?? 'en'
+    const loc = authLocale()
     const base = config.public.appUrl.replace(/\/$/, '')
     return `${base}/auth/confirm?lang=${encodeURIComponent(loc)}`
   }
@@ -61,6 +64,7 @@ export const useAuth = () => {
   const signInWithPassword = async (email: string, password: string) => {
     const { error } = await client().auth.signInWithPassword({ email, password })
     if (error) throw error
+    await syncSupabaseUserLocale(client(), authLocale())
     await redirectAfterLogin()
   }
 
@@ -70,6 +74,7 @@ export const useAuth = () => {
       email,
       options: {
         emailRedirectTo,
+        data: { locale: authLocale() },
       },
     })
     if (error) throw error
@@ -82,6 +87,7 @@ export const useAuth = () => {
       password,
       options: {
         emailRedirectTo,
+        data: { locale: authLocale() },
       },
     })
     if (error) throw error

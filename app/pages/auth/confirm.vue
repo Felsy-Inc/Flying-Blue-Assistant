@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { nextTick, onMounted, ref } from 'vue'
+import { syncSupabaseUserLocale } from '~lib/auth/sync-user-locale'
 import { normalizeLocale } from '~lib/i18n'
 
 definePageMeta({
@@ -10,7 +11,7 @@ definePageMeta({
 
 const route = useRoute()
 const router = useRouter()
-const { setLocale } = useI18n()
+const { setLocale, locale: i18nLocale } = useI18n()
 
 const rawLang = route.query.lang
 const langParam =
@@ -59,6 +60,8 @@ onMounted(async () => {
   const trySession = async () => {
     const { data, error } = await client.auth.getSession()
     if (error || !data.session) return false
+    const loc = normalizeLocale(String(i18nLocale.value)) ?? 'en'
+    await syncSupabaseUserLocale(client, loc)
     await redirectAfterLogin()
     return true
   }

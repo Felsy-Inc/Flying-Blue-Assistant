@@ -1,0 +1,1 @@
+{{if and .Data (eq .Data.locale "nl")}}Je inloglink | Award Flight Alert{{else if and .Data (eq .Data.locale "fr")}}Votre lien de connexion | Award Flight Alert{{else}}Your sign-in link | Award Flight Alert{{end}}

@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { computed } from 'vue'
+import { syncSupabaseUserLocale } from '~lib/auth/sync-user-locale'
 import { locales, type Locale } from '~lib/i18n'
 
 const { t } = useT()
+const nuxtApp = useNuxtApp()
 const { locale, setLocale } = useI18n()
 
 const localeItems = computed(() =>
@@ -15,7 +18,11 @@ const localeItems = computed(() =>
 const localeModel = computed({
   get: () => locale.value as Locale,
   set: (v: Locale) => {
-    void setLocale(v)
+    void (async () => {
+      await setLocale(v)
+      const client = (nuxtApp.$supabase as { client: SupabaseClient } | undefined)?.client
+      await syncSupabaseUserLocale(client, v)
+    })()
   },
 })
 </script>
