@@ -6,10 +6,16 @@ export function isSiteAccessConfigured(): boolean {
   return Boolean(process.env.SITE_ACCESS_PASSWORD?.trim())
 }
 
+/** Strip `/nl` / `/fr` prefix so exempt rules match locale-prefixed URLs (e.g. `/nl/auth/confirm`). */
+function pathWithoutLocalePrefix(pathname: string): string {
+  return pathname.replace(/^\/(nl|fr)(?=\/)/, '')
+}
+
 /** Paths that must stay reachable without the gate cookie (webhooks, auth return URL, assets). */
 export function siteAccessExemptPath(pathname: string): boolean {
   const p = pathname.split('?')[0] ?? pathname
   if (p === '/favicon.ico' || p === '/robots.txt') return true
+  const normalized = pathWithoutLocalePrefix(p)
   const prefixes = [
     '/_nuxt',
     '/__nuxt',
@@ -19,7 +25,13 @@ export function siteAccessExemptPath(pathname: string): boolean {
     '/site-access',
     '/auth/',
   ]
-  return prefixes.some((pre) => p === pre || p.startsWith(`${pre}/`))
+  return prefixes.some(
+    (pre) =>
+      p === pre ||
+      p.startsWith(`${pre}/`) ||
+      normalized === pre ||
+      normalized.startsWith(`${pre}/`),
+  )
 }
 
 function signingSecretBuf(password: string): Buffer {

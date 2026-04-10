@@ -101,6 +101,13 @@ export default defineNuxtConfig({
     '/fr/**': { prerender: false },
     '/app/**': { prerender: false },
     '/auth/**': { prerender: false },
+    /**
+     * @nuxtjs/supabase only sets `ssr: false` for `redirectOptions.callback` (`/auth/confirm`).
+     * Locale-prefixed routes (`/nl/auth/confirm`, `/fr/auth/confirm`) must also be client-only so
+     * PKCE magic-link exchange runs in the browser; otherwise the first paint can be blank until refresh.
+     */
+    '/nl/auth/confirm': { ssr: false },
+    '/fr/auth/confirm': { ssr: false },
   } as NuxtConfig['routeRules'],
 
   modules: [

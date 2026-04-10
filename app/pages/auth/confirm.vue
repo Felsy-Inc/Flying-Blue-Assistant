@@ -42,12 +42,6 @@ useSeoMeta({
 })
 
 onMounted(async () => {
-  const q = { ...route.query }
-  if (q.lang != null) {
-    delete q.lang
-    await router.replace({ path: route.path, query: q, hash: route.hash })
-  }
-
   const supabase = useNuxtApp().$supabase as { client: SupabaseClient } | undefined
   const client = supabase?.client
   if (!client) {
@@ -56,6 +50,26 @@ onMounted(async () => {
   }
 
   await nextTick()
+
+  const rawCode = route.query.code
+  const oauthCode =
+    typeof rawCode === 'string' ? rawCode : Array.isArray(rawCode) ? rawCode[0] : undefined
+  if (oauthCode) {
+    const { error: exchangeError } = await client.auth.exchangeCodeForSession(oauthCode)
+    if (exchangeError) {
+      const { data: existing } = await client.auth.getSession()
+      if (!existing.session) {
+        status.value = 'err'
+        return
+      }
+    }
+  }
+
+  const q = { ...route.query }
+  if (q.lang != null) {
+    delete q.lang
+    await router.replace({ path: route.path, query: q, hash: route.hash })
+  }
 
   const trySession = async () => {
     const { data, error } = await client.auth.getSession()
