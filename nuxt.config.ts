@@ -14,6 +14,9 @@ const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_KEY
 const enableSupabaseModule = Boolean(supabaseUrl && supabaseKey)
 
+/** When set, `server/middleware/site-access.ts` gates the whole site; `/` must not be prerendered or static HTML bypasses the gate. */
+const siteAccessEnabled = Boolean(process.env.SITE_ACCESS_PASSWORD?.trim())
+
 /** Dotenv often yields `True` / `1`; strict `=== 'true'` hid billing in production prerender too. */
 function envTruthy(v: string | undefined): boolean {
   if (v === undefined || v === '') return false
@@ -89,7 +92,7 @@ export default defineNuxtConfig({
   routeRules: {
     /** Stripe signature verification needs the raw body (see `server/api/stripe/webhook.post.ts`). */
     '/api/stripe/webhook': { bodyParser: false },
-    '/': { prerender: true },
+    '/': { prerender: !siteAccessEnabled },
     /** Needs request-time `BILLING_ENABLED` in payload; prerender bakes build-time env → wrong CTAs. */
     '/pricing': { prerender: false },
     '/login': { prerender: false },
